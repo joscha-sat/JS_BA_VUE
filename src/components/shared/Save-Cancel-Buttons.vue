@@ -1,13 +1,15 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
 const router = useRouter();
+
+defineEmits(['save'])
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
     <v-card-actions>
         <!-- SAVE BTN -->
-        <v-btn class="flex-grow-1" color="primary" variant="flat">
+        <v-btn class="flex-grow-1" color="primary" variant="flat" @click="$emit('save')">
             {{ $t('GENERAL.SAVE') }}
         </v-btn>
 

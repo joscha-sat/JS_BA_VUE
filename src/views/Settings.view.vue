@@ -1,6 +1,12 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
+import { useSettingsHelperStore } from "@/stores/SettingsHelper.store";
 
+const settingsStore = useSettingsHelperStore();
+
+const saveSettings = () => {
+    settingsStore.saveSettings();
+}
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
@@ -15,7 +21,7 @@
 
             <!-- CONTENT -->
             <v-card-text class="cardText">
-                <!-- THEME COLOR PICKER -->
+                <!-- PRIMARY COLOR PICKER -->
                 <div class="block">
                     <ColorThemePicker/>
                 </div>
@@ -31,7 +37,7 @@
                 </div>
             </v-card-text>
 
-            <SaveCancelButtons/>
+            <SaveCancelButtons @save="saveSettings"/>
         </v-card>
     </v-container>
 </template>

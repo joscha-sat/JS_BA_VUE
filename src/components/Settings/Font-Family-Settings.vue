@@ -1,21 +1,12 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang='ts' setup>
-const selectedFontFamily = ref('Calibri');
+import { useSettingsHelperStore } from "@/stores/SettingsHelper.store";
+
 const items = ['Calibri', 'Roboto', 'Helvetica'];
 
-watch(selectedFontFamily, newValue => {
-    document.body.setAttribute('data-font-family', newValue.toLowerCase());
-    localStorage.setItem('font-family', selectedFontFamily.value);
-});
+const settingsStore = useSettingsHelperStore();
+const { selectedFontFamily } = storeToRefs(settingsStore);
 
-onMounted(() => {
-    const storedFont = localStorage.getItem('font-family');
-
-    if (storedFont) {
-        document.body.setAttribute('data-font-family', storedFont.toLowerCase());
-        selectedFontFamily.value = storedFont;
-    }
-});
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
