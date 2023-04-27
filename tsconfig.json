@@ -1,0 +1,25 @@
+{
+    "extends": "@vue/tsconfig/tsconfig.web.json",
+    "include": [
+        "env.d.ts",
+        "src/**/*",
+        "src/**/*.vue",
+        "auto-imports.d.ts",
+        "components.d.ts"
+    ],
+    "compilerOptions": {
+        "module": "es2022",
+        "moduleResolution": "Node",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "references": [
+        {
+            "path": "./tsconfig.node.json"
+        }
+    ]
+}

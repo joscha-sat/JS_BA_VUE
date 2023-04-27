@@ -1,0 +1,46 @@
+{
+    "name": "ba-joscha-sattler",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "serve": "vite preview",
+        "build": "vite build",
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+        "build-only": "vite build",
+        "dev": "vite",
+        "format": "prettier --write src/",
+        "preview": "vite preview",
+        "type-check": "vue-tsc --noEmit"
+    },
+    "dependencies": {
+        "@mdi/font": "7.2.96",
+        "pinia": "^2.0.35",
+        "roboto-fontface": "*",
+        "unplugin-vue-components": "^0.24.1",
+        "vue": "^3.2.47",
+        "vue-i18n": "^9.2.2",
+        "vue-router": "^4.1.6",
+        "vuetify": "^3.2.0",
+        "webfontloader": "^1.6.28"
+    },
+    "devDependencies": {
+        "@rushstack/eslint-patch": "^1.2.0",
+        "@types/node": "^18.16.1",
+        "@types/webfontloader": "^1.6.35",
+        "@vitejs/plugin-vue": "^4.2.1",
+        "@vitejs/plugin-vue-jsx": "^3.0.1",
+        "@vue/eslint-config-prettier": "^7.1.0",
+        "@vue/eslint-config-typescript": "^11.0.3",
+        "@vue/tsconfig": "^0.3.2",
+        "eslint": "^8.39.0",
+        "eslint-plugin-vue": "^9.11.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.8.8",
+        "typescript": "4.9.5",
+        "unplugin-auto-import": "^0.15.3",
+        "vite": "^4.3.3",
+        "vite-plugin-vuetify": "^1.0.2",
+        "vue-cli-plugin-vuetify": "~2.5.8",
+        "vue-tsc": "^1.6.0"
+    }
+}
