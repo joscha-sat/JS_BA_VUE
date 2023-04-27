@@ -9,9 +9,17 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BaseExpansionPanel: typeof import('./src/components/shared/base-expansion-panel.vue')['default']
+    ColorThemePicker: typeof import('./src/components/Settings/Color-Theme-Picker.vue')['default']
+    ExpansionPanel: typeof import('./src/components/shared/Expansion-Panel.vue')['default']
+    FontColorSettings: typeof import('./src/components/Settings/Font-Color-Settings.vue')['default']
+    FontFamilySettings: typeof import('./src/components/Settings/Font-Family-Settings.vue')['default']
+    FontSizeSettings: typeof import('./src/components/Settings/Font-Size-Settings.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SaveCancelButtons: typeof import('./src/components/shared/Save-Cancel-Buttons.vue')['default']
+    SettingLayout: typeof import('./src/components/Settings/Setting-Layout.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }

@@ -1,0 +1,13 @@
+{
+    "GENERAL": {
+        "SAVE": "Save",
+        "BACK": "Back"
+    },
+    "SETTINGS": {
+        "TITLE": "Settings",
+        "THEME_PICKER": "Chose your favourite color!",
+        "FONT_FAMILY": "Change font family!",
+        "FONT_SIZE": "Change font size!",
+        "FONT_SIZE_EXAMPLE": "Example text size"
+    }
+}

@@ -16,6 +16,7 @@
         "@mdi/font": "7.2.96",
         "pinia": "^2.0.35",
         "roboto-fontface": "*",
+        "sass": "^1.62.1",
         "unplugin-vue-components": "^0.24.1",
         "vue": "^3.2.47",
         "vue-i18n": "^9.2.2",

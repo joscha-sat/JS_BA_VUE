@@ -10,6 +10,8 @@
     "compilerOptions": {
         "module": "es2022",
         "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
         "paths": {
             "@/*": [

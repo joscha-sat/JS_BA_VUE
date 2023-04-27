@@ -68,6 +68,7 @@
     "useCssModule": true,
     "useCssVars": true,
     "useLink": true,
+    "useOnLoadHelperStore": true,
     "useRoute": true,
     "useRouter": true,
     "useSlots": true,

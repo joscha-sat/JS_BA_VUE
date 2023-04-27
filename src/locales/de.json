@@ -1,0 +1,13 @@
+{
+    "GENERAL": {
+        "SAVE": "Speichern",
+        "BACK": "Zurück"
+    },
+    "SETTINGS": {
+        "TITLE": "Einstellungen",
+        "THEME_PICKER": "Wähle deine Lieblingsfarbe!",
+        "FONT_FAMILY": "Ändere die Schriftart!",
+        "FONT_SIZE": "Ändere die Schriftgröße!",
+        "FONT_SIZE_EXAMPLE": "Beispiel Textgröße"
+    }
+}
