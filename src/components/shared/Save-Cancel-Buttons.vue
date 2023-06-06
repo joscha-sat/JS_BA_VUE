@@ -1,6 +1,9 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
 const router = useRouter();
+defineProps({
+    hasCancelBtn: Boolean
+})
 
 defineEmits(['save'])
 </script>
@@ -9,12 +12,12 @@ defineEmits(['save'])
 <template>
     <v-card-actions>
         <!-- SAVE BTN -->
-        <v-btn class="flex-grow-1" color="primary" variant="flat" @click="$emit('save')">
+        <v-btn class="flex-grow-1" color="primary" variant="flat" @click="$emit('save'); router.back();">
             {{ $t('GENERAL.SAVE') }}
         </v-btn>
 
         <!-- CANCEL BTN -->
-        <v-btn class="flex-grow-1" color="cancel" variant="flat" @click="router.back()">
+        <v-btn v-if="hasCancelBtn" class="flex-grow-1" color="cancel" variant="flat" @click="router.back()">
             {{ $t('GENERAL.BACK') }}
         </v-btn>
     </v-card-actions>

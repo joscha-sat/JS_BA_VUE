@@ -1,12 +1,9 @@
 import { defineStore } from 'pinia';
 import { useTheme } from 'vuetify';
-import { useSettingsHelperStore } from '@/stores/SettingsHelper.store';
 
 export const useOnLoadHelperStore = defineStore('onLoadHelper', () => {
     // STATE ------------------------------------------------------------------------------------------ |>
     const theme = useTheme();
-    const settingsStore = useSettingsHelperStore();
-    const { selectedFontFamily } = storeToRefs(settingsStore);
 
     // GETTER | COMPUTED ------------------------------------------------------------------------------ |>
 
@@ -28,7 +25,6 @@ export const useOnLoadHelperStore = defineStore('onLoadHelper', () => {
     const setFontFamily = () => {
         const fontFamily = localStorage.getItem('font-family');
         if (fontFamily) document.body.setAttribute('data-font-family', fontFamily.toLowerCase());
-        selectedFontFamily.value = fontFamily;
     };
 
     const setThemeMode = () => {

@@ -1,12 +1,5 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
-import { useSettingsHelperStore } from "@/stores/SettingsHelper.store";
-
-const settingsStore = useSettingsHelperStore();
-
-const saveSettings = () => {
-    settingsStore.saveSettings();
-}
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
@@ -37,7 +30,7 @@ const saveSettings = () => {
                 </div>
             </v-card-text>
 
-            <SaveCancelButtons @save="saveSettings"/>
+            <SaveCancelButtons/>
         </v-card>
     </v-container>
 </template>
@@ -45,15 +38,15 @@ const saveSettings = () => {
 <!-- SCSS ---------------------------------------------------------// -->
 <style lang="scss" scoped>
 .card {
-  margin: auto;
-  width: min(25rem, 100%);
+    margin: auto;
+    width: min(25rem, 100%);
 }
 
 .cardText {
-  padding-bottom: 0;
+    padding-bottom: 0;
 }
 
 .maTop {
-  margin-top: 1.5rem;
+    margin-top: 1.5rem;
 }
 </style>
