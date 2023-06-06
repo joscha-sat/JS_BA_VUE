@@ -5,16 +5,15 @@
 import { useSpeechSynthesis } from "@vueuse/core";
 
 const txt = ref();
-const text = ref();
 
 const speechStore = useTextToSpeechStore();
 const { speech, voices, voice } = storeToRefs(speechStore);
 
 
 const test = () => {
-    text.value = txt.value.textContent;
 
-    speech.value = useSpeechSynthesis(text, {
+
+    speech.value = useSpeechSynthesis(txt.value.textContent, {
         voice
     })
     speech.value.speak()
