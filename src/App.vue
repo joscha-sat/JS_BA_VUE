@@ -37,7 +37,7 @@ const toggleLanguage = () => {
         voice.value = voices.value.find(
           (voice) =>
             voice.name ===
-            'Microsoft Conrad Online (Natural) - German (Germany) (de-DE)'
+            'Microsoft Conrad Online (Natural) - German (Germany)'
         );
         console.log(voice.value)
     } else {
@@ -46,7 +46,7 @@ const toggleLanguage = () => {
         voice.value = voices.value.find(
           (voice) =>
             voice.name ===
-            'Microsoft Ryan Online (Natural) - English (United Kingdom) (en-GB)'
+            'Microsoft Ryan Online (Natural) - English (United Kingdom)'
         );
 
         console.log(voice.value)

@@ -31,11 +31,8 @@ export const useTextToSpeechStore = defineStore('textToSpeech', {
             // default voice
             this.voice = this.voices.find(
                 (voice) =>
-                    voice.name ===
-                    'Microsoft Ryan Online (Natural) - English (United Kingdom) (en-GB)'
+                    voice.name === 'Microsoft Ryan Online (Natural) - English (United Kingdom)'
             );
-
-            console.log(this.voice);
         },
 
         loadVoices() {
