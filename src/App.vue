@@ -4,6 +4,7 @@
             <template #append>
                 <v-btn :to='"/settings"' icon='mdi-cog' variant='plain'></v-btn>
                 <v-btn icon='mdi-theme-light-dark' variant='plain' @click='toggleTheme()'></v-btn>
+                <v-btn icon='mdi-account-voice' variant='plain' @click='toggleLanguage()'></v-btn>
             </template>
         </v-app-bar>
         <v-main>
@@ -15,14 +16,42 @@
 <script lang='ts' setup>
 import { useTheme } from 'vuetify';
 import { useTextToSpeechStore } from "@/stores/TextToSpeech.store";
+import i18n from "../i18n";
+import { storeToRefs } from "pinia";
+
 
 const theme = useTheme();
 const initialLoadingHelperStore = useOnLoadHelperStore();
 const speechStore = useTextToSpeechStore();
+const { voice, voices } = storeToRefs(speechStore)
+
 const toggleTheme = () => {
     theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
     localStorage.setItem('mode', theme.global.name.value);
 };
+
+
+const toggleLanguage = () => {
+    if (i18n.global.locale.value === 'en') {
+        i18n.global.locale.value = "de"
+        voice.value = voices.value.find(
+          (voice) =>
+            voice.name ===
+            'Microsoft Conrad Online (Natural) - German (Germany) (de-DE)'
+        );
+        console.log(voice.value)
+    } else {
+        i18n.global.locale.value = "en"
+        console.log(voices.value)
+        voice.value = voices.value.find(
+          (voice) =>
+            voice.name ===
+            'Microsoft Ryan Online (Natural) - English (United Kingdom) (en-GB)'
+        );
+
+        console.log(voice.value)
+    }
+}
 
 onMounted(() => {
     // set primary color on load --> from old session (localStorage)

@@ -29,11 +29,13 @@ export const useTextToSpeechStore = defineStore('textToSpeech', {
             );
 
             // default voice
-            this.voice = this.voice = this.voices.find(
+            this.voice = this.voices.find(
                 (voice) =>
                     voice.name ===
                     'Microsoft Ryan Online (Natural) - English (United Kingdom) (en-GB)'
             );
+
+            console.log(this.voice);
         },
 
         loadVoices() {
