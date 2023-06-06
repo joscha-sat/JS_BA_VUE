@@ -24,7 +24,7 @@
                     <FontSizeSettings/>
                 </div>
 
-                <!-- FONT FAMILY SETTER -->
+                <!-- FONT FAMILY SELECTOR -->
                 <div class="block">
                     <FontFamilySettings/>
                 </div>
@@ -39,7 +39,7 @@
 <style lang="scss" scoped>
 .card {
     margin: auto;
-    width: min(25rem, 100%);
+    width: min(35rem, 100%);
 }
 
 .cardText {

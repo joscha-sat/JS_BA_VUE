@@ -8,6 +8,7 @@
         "THEME_PICKER": "Wähle deine Lieblingsfarbe!",
         "FONT_FAMILY": "Ändere die Schriftart!",
         "FONT_SIZE": "Ändere die Schriftgröße!",
-        "FONT_SIZE_EXAMPLE": "Beispiel Textgröße"
+        "FONT_SIZE_EXAMPLE": "Beispiel Textgröße",
+        "VOICE": "Stimme wählen!"
     }
 }

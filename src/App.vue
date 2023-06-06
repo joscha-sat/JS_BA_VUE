@@ -14,10 +14,11 @@
 
 <script lang='ts' setup>
 import { useTheme } from 'vuetify';
+import { useTextToSpeechStore } from "@/stores/TextToSpeech.store";
 
 const theme = useTheme();
 const initialLoadingHelperStore = useOnLoadHelperStore();
-
+const speechStore = useTextToSpeechStore();
 const toggleTheme = () => {
     theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
     localStorage.setItem('mode', theme.global.name.value);
@@ -36,6 +37,8 @@ onMounted(() => {
     // set theme mode on load --> from old session (localStorage)
     initialLoadingHelperStore.setThemeMode();
 
+    // set voices
+    speechStore.onMounted();
 });
 </script>
 

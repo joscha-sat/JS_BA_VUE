@@ -19,6 +19,8 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SaveCancelButtons: typeof import('./src/components/shared/Save-Cancel-Buttons.vue')['default']
+    SelectVoice: typeof import('./src/components/Settings/SelectVoice.vue')['default']
+    SelectVoiceSettings: typeof import('./src/components/Settings/Select-Voice-Settings.vue')['default']
     SettingLayout: typeof import('./src/components/Settings/Setting-Layout.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']

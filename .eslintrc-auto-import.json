@@ -72,6 +72,7 @@
     "useRoute": true,
     "useRouter": true,
     "useSlots": true,
+    "useTextToSpeechStore": true,
     "watch": true,
     "watchEffect": true,
     "watchPostEffect": true,

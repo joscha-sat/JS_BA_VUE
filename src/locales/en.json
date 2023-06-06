@@ -8,6 +8,7 @@
         "THEME_PICKER": "Chose your favourite color!",
         "FONT_FAMILY": "Change font family!",
         "FONT_SIZE": "Change font size!",
-        "FONT_SIZE_EXAMPLE": "Example text size"
+        "FONT_SIZE_EXAMPLE": "Example text size",
+        "VOICE": "Chose voice!"
     }
 }
