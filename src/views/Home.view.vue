@@ -11,7 +11,7 @@ const { speech, voice } = storeToRefs(speechStore);
 
 
 const test = () => {
-    
+
     speech.value = useSpeechSynthesis(txt.value.textContent, {
         voice
     })
@@ -23,14 +23,12 @@ const test = () => {
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
-    <v-container>
+    <v-container style="display: flex; align-items: center; gap: 0.5rem">
         <div ref="txt">
-            {{ $t('GENERAL.SAVE') }}
+            {{ $t('GREETINGS') }}
         </div>
 
-        <v-btn @click="test">
-            click
-        </v-btn>
+        <v-btn icon="mdi-play" @click="test"></v-btn>
 
     </v-container>
 </template>

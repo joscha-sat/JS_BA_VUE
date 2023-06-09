@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { useSpeechSynthesis } from '@vueuse/core';
+import i18n from '../../i18n';
 
 interface SpeechStore {
     voice: SpeechSynthesisVoice | undefined;
@@ -29,10 +30,16 @@ export const useTextToSpeechStore = defineStore('textToSpeech', {
             );
 
             // default voice
-            this.voice = this.voices.find(
-                (voice) =>
-                    voice.name === 'Microsoft Ryan Online (Natural) - English (United Kingdom)'
-            );
+            if (i18n.global.locale.value === 'en') {
+                this.voice = this.voices.find(
+                    (voice) =>
+                        voice.name === 'Microsoft Ryan Online (Natural) - English (United Kingdom)'
+                );
+            } else {
+                this.voice = this.voices.find(
+                    (voice) => voice.name === 'Microsoft Conrad Online (Natural) - German (Germany)'
+                );
+            }
         },
 
         loadVoices() {
