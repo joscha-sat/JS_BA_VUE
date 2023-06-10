@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { useTheme } from 'vuetify';
+import { useMascotStore } from '@/stores/mascot.store';
 
 export const useOnLoadHelperStore = defineStore('onLoadHelper', () => {
     // STATE ------------------------------------------------------------------------------------------ |>
@@ -36,6 +37,17 @@ export const useOnLoadHelperStore = defineStore('onLoadHelper', () => {
         }
     };
 
+    const setMascot = () => {
+        const mascotStore = useMascotStore();
+        const { isDog } = storeToRefs(mascotStore);
+        const selectedMascot = localStorage.getItem('mascot');
+        if (selectedMascot === 'dog') {
+            isDog.value = true;
+        } else if (selectedMascot === 'cat') {
+            isDog.value = false;
+        }
+    };
+
     // RETURN --------------------------------------------------------------------------------------- |>
-    return { setPrimaryColor, setFontSize, setFontFamily, setThemeMode };
+    return { setPrimaryColor, setFontSize, setFontFamily, setThemeMode, setMascot };
 });

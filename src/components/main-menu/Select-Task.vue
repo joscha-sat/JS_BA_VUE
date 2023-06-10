@@ -30,8 +30,12 @@ const test = (txt) => {
                 {{ $t(task) }}
             </v-card-text>
             <v-card-actions>
-                <v-btn @click="test($t(task))">hear
-                    <v-icon>mdi-volume-high</v-icon>
+                <v-btn @click="test($t(task))">
+                    <div style="display: flex; gap: 0.5rem">
+                        <span>hear</span>
+                        <v-icon style="transform: scale(1.2)">mdi-volume-high</v-icon>
+                    </div>
+
                 </v-btn>
             </v-card-actions>
         </v-card>
