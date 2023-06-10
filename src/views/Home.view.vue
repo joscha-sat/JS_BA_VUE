@@ -2,10 +2,13 @@
 <script lang="ts" setup>
 import happyDog from '../assets/mascot/dog/happyDog.png';
 import happyCat from '../assets/mascot/cat/happyCat.png';
+import bark from '../assets/sounds/dog/bark.mp3';
+import meow from '../assets/sounds/cat/meow.mp3';
 import { useSpeechSynthesis } from "@vueuse/core";
 import { useMascotStore } from "@/stores/mascot.store";
 
 const txt = ref();
+const audioRef = ref<HTMLAudioElement>();
 
 const speechStore = useTextToSpeechStore();
 const { speech, voice } = storeToRefs(speechStore);
@@ -19,7 +22,9 @@ const test = () => {
     })
     speech.value.speak()
 }
-
+const playSound = () => {
+    audioRef.value.play()
+}
 
 </script>
 
@@ -40,7 +45,9 @@ const test = () => {
         </div>
 
         <div class="right">
-            <img :src="isDog? happyDog : happyCat" alt="mascot" class="image">
+            <img :src="isDog? happyDog : happyCat" alt="mascot" class="image" style="cursor: pointer"
+                 @click="playSound">
+            <audio ref="audioRef" :src="isDog? bark : meow"></audio>
         </div>
     </div>
 
