@@ -1,17 +1,19 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
-
-
+import happyDog from '../assets/mascot/dog/happyDog.png';
+import happyCat from '../assets/mascot/cat/happyCat.png';
 import { useSpeechSynthesis } from "@vueuse/core";
+import { useMascotStore } from "@/stores/mascot.store";
 
 const txt = ref();
 
 const speechStore = useTextToSpeechStore();
 const { speech, voice } = storeToRefs(speechStore);
 
+const mascotStore = useMascotStore();
+const { isDog } = storeToRefs(mascotStore)
 
 const test = () => {
-
     speech.value = useSpeechSynthesis(txt.value.textContent, {
         voice
     })
@@ -23,17 +25,58 @@ const test = () => {
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
-    <v-container style="display: flex; align-items: center; gap: 0.5rem">
-        <div ref="txt">
-            {{ $t('GREETINGS') }}
+
+    <h1 ref="txt"
+        style="display: flex; align-items: center; justify-content: center; gap: 1rem;text-align: center; margin-top: 1rem">
+        {{ $t('GREETINGS') }}
+        <v-btn icon="mdi-volume-high" @click="test"></v-btn>
+    </h1>
+
+    <div class="container">
+        <div class="left"></div>
+
+        <div class="content">
+            <SelectTask/>
         </div>
 
-        <v-btn icon="mdi-play" @click="test"></v-btn>
+        <div class="right">
+            <img :src="isDog? happyDog : happyCat" alt="mascot" class="image">
+        </div>
+    </div>
 
-    </v-container>
 </template>
 
 <!-- SCSS ---------------------------------------------------------// -->
 <style lang="scss" scoped>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
 
+.left {
+    flex-basis: 10%;
+}
+
+.content {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.right {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.image {
+    height: 500px;
+
+    object-fit: contain;
+}
 </style>

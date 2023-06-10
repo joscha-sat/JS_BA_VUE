@@ -11,5 +11,12 @@
         "FONT_SIZE": "Change font size!",
         "FONT_SIZE_EXAMPLE": "Example text size",
         "VOICE": "Chose voice!"
+    },
+    "TASKS": {
+        "LISTENING": "Listening",
+        "RHYMES": "Rhymes",
+        "SENTENCES_AND_WORDS": "Sentences and words",
+        "INITIAL_SOUND": "Initial sound",
+        "PHONEMES": "Phonemes"
     }
 }

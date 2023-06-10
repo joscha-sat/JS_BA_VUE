@@ -3,7 +3,7 @@
         "SAVE": "Speichern",
         "BACK": "Zurück"
     },
-    "GREETINGS": "Hallo und willkommen bei lauschen, spielen, lernen! Wähle eine Aufgabe aus!",
+    "GREETINGS": "Hallo und Willkommen bei lauschen, spielen, lernen! Wähle eine Aufgabe aus!",
     "SETTINGS": {
         "TITLE": "Einstellungen",
         "THEME_PICKER": "Wähle deine Lieblingsfarbe!",
@@ -11,5 +11,12 @@
         "FONT_SIZE": "Ändere die Schriftgröße!",
         "FONT_SIZE_EXAMPLE": "Beispiel Textgröße",
         "VOICE": "Stimme wählen!"
+    },
+    "TASKS": {
+        "LISTENING": "Lauschen",
+        "RHYMES": "Reime",
+        "SENTENCES_AND_WORDS": "Sätze und Wörter",
+        "INITIAL_SOUND": "Anlaut",
+        "PHONEMES": "Phoneme"
     }
 }
