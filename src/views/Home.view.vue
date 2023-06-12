@@ -60,7 +60,7 @@ const playSound = () => {
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 1rem;
     margin-top: 1.5rem;
 }
 
@@ -69,7 +69,7 @@ const playSound = () => {
 }
 
 .content {
-    flex-basis: 50%;
+    flex-basis: 55%;
     display: flex;
     justify-content: center;
 
@@ -79,11 +79,10 @@ const playSound = () => {
     flex-basis: 25%;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
 }
 
 .image {
-    height: 400px;
+    height: 450px;
 
     object-fit: contain;
 }
