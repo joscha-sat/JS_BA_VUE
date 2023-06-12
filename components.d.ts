@@ -7,16 +7,16 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    ColorThemePicker: typeof import('./src/components/Settings/Color-Theme-Picker.vue')['default']
+    BackBtn: typeof import('./src/components/shared/Back-Btn.vue')['default']
+    ColorThemePicker: typeof import('./src/components/settings/Color-Theme-Picker.vue')['default']
     ExpansionPanel: typeof import('./src/components/shared/Expansion-Panel.vue')['default']
-    FontFamilySettings: typeof import('./src/components/Settings/Font-Family-Settings.vue')['default']
-    FontSizeSettings: typeof import('./src/components/Settings/Font-Size-Settings.vue')['default']
+    FontFamilySettings: typeof import('./src/components/settings/Font-Family-Settings.vue')['default']
+    FontSizeSettings: typeof import('./src/components/settings/Font-Size-Settings.vue')['default']
     ImageCard: typeof import('./src/components/shared/Image-Card.vue')['default']
     LeftRight: typeof import('./src/components/layouts/left-right.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SaveCancelButtons: typeof import('./src/components/shared/Save-Cancel-Buttons.vue')['default']
     SelectTask: typeof import('./src/components/main-menu/Select-Task.vue')['default']
-    TitleLeftRight: typeof import('./src/components/layouts/title-left-right.vue')['default']
   }
 }

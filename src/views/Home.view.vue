@@ -1,9 +1,11 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
-import happyDog from '../assets/mascot/dog/happyDog.png';
-import happyCat from '../assets/mascot/cat/happyCat.png';
+import happyDog from '@/assets/images/dog/happyDog.png';
+import happyCat from '@/assets/images/cat/happyCat.png';
 import bark from '../assets/sounds/dog/bark.mp3';
 import meow from '../assets/sounds/cat/meow.mp3';
+
+
 import { useSpeechSynthesis } from "@vueuse/core";
 import { useMascotStore } from "@/stores/mascot.store";
 
@@ -59,7 +61,6 @@ const playSound = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
     margin-top: 1.5rem;
 }
 
@@ -68,14 +69,14 @@ const playSound = () => {
 }
 
 .content {
-    flex-basis: 30%;
+    flex-basis: 50%;
     display: flex;
     justify-content: center;
 
 }
 
 .right {
-    flex-basis: 30%;
+    flex-basis: 25%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -87,3 +88,6 @@ const playSound = () => {
     object-fit: contain;
 }
 </style>
+
+
+

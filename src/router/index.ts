@@ -17,6 +17,11 @@ const router = createRouter({
             name: 'settings',
             component: () => import('../views/Settings.view.vue'),
         },
+        {
+            path: '/listening',
+            name: 'listening',
+            component: () => import('../views/Listening.view.vue'),
+        },
     ],
 });
 

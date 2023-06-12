@@ -4,52 +4,66 @@ import { useSpeechSynthesis } from "@vueuse/core";
 
 const speechStore = useTextToSpeechStore();
 const { speech, voice } = storeToRefs(speechStore);
+import listening from '../../assets/images/tasks/listening.png';
+import rhymes from '../../assets/images/tasks/rhymes.png';
+import words from '../../assets/images/tasks/words.jpg';
+import iSound from '../../assets/images/tasks/initialSound.png';
+import phonemes from '../../assets/images/tasks/phonemes.png';
+import router from "@/router";
 
 const tasks = ref([
-    'TASKS.LISTENING',
-    'TASKS.RHYMES',
-    'TASKS.SENTENCES_AND_WORDS',
-    'TASKS.INITIAL_SOUND',
-    'TASKS.PHONEMES',
+    { i18n: 'TASKS.LISTENING', src: listening, to: 'listening' },
+    { i18n: 'TASKS.RHYMES', src: rhymes, to: 'listening' },
+    { i18n: 'TASKS.SENTENCES_AND_WORDS', src: words, to: 'listening' },
+    { i18n: 'TASKS.INITIAL_SOUND', src: iSound, to: 'listening' },
+    { i18n: 'TASKS.PHONEMES', src: phonemes, to: 'listening' }
 ]);
 
-const test = (txt) => {
+const playVoice = (txt) => {
     speech.value = useSpeechSynthesis(txt, {
         voice
     })
     speech.value.speak()
 }
 
+const toTask = (to: string) => {
+    console.log('clicked')
+    router.push({
+        path: to
+    })
+}
+
 </script>
+
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
-    <div class="flex">
-        <v-card v-for="(task, i) in tasks" :key="i" style="display: flex; justify-content: space-between">
-            <v-card-text class="v-txt">
-                {{ $t(task) }}
-            </v-card-text>
-            <v-card-actions>
-                <v-btn @click="test($t(task))">
-                    <div style="display: flex; gap: 0.5rem">
-                        <span>hear</span>
-                        <v-icon style="transform: scale(1.2)">mdi-volume-high</v-icon>
-                    </div>
-
-                </v-btn>
-            </v-card-actions>
-        </v-card>
+    <div class="grid">
+        <ImageCard
+          v-for="(task, i) in tasks"
+          :key="i"
+          :src="task.src"
+          :title="$t(task.i18n)"
+          @toTask="toTask(task.to)"
+          @voice="playVoice($t(task.i18n))"
+        />
     </div>
+
 </template>
 
 <!-- SCSS ---------------------------------------------------------// -->
 <style lang="scss" scoped>
 
-.flex {
-    display: flex;
+.grid {
+    display: grid;
     gap: 1rem;
-    flex-direction: column;
-    flex-grow: 1;
+
+    grid-template-columns: repeat(
+    auto-fit,
+        minmax(min(max(100% / 3 - 1rem, 10rem), 100%), 1fr)
+  );
+
+
 }
 
 </style>
