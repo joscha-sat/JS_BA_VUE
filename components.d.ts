@@ -14,6 +14,8 @@ declare module 'vue' {
     FontSizeSettings: typeof import('./src/components/settings/Font-Size-Settings.vue')['default']
     ImageCard: typeof import('./src/components/shared/Image-Card.vue')['default']
     LeftRight: typeof import('./src/components/layouts/left-right.vue')['default']
+    ListeningOne: typeof import('./src/components/tasks/listening/Listening-One.vue')['default']
+    ListeningPlaySound: typeof import('./src/components/shared/ListeningPlaySound.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SaveCancelButtons: typeof import('./src/components/shared/Save-Cancel-Buttons.vue')['default']

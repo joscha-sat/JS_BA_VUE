@@ -44,7 +44,7 @@ const toTask = (to: string) => {
           :key="i"
           :src="task.src"
           :title="$t(task.i18n)"
-          @toTask="toTask(task.to)"
+          @clickImg="toTask(task.to)"
           @voice="playVoice($t(task.i18n))"
         />
     </div>
