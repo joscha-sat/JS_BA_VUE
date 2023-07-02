@@ -8,11 +8,11 @@
     <v-container style="display: flex; flex-direction: column">
 
         <div class="link">
-            check results are from
-            <a href="https://rhymebrain.com/api.html" target="_blank">RhymeBrain</a>
+            rhymes are checked by
+            <a href="https://rhymebrain.com/api.html" target="_blank">RhymeBrain API</a>
         </div>
 
-        <RhymesOne/>
+        <RhymesTask/>
     </v-container>
 </template>
 

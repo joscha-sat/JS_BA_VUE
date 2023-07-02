@@ -51,6 +51,6 @@ const playSound = () => {
     align-items: center;
     gap: 2.5rem;
     margin: auto;
-    width: min(25em, 100%);
+    width: min(23em, 100%);
 }
 </style>

@@ -33,6 +33,8 @@ const check = async (currentCard: number) => {
 
     if (enteredWord.value)
         doesItRhyme.value = rhymesArray.value.includes(enteredWord.value.toLowerCase());
+
+    // if (doesItRhyme) nextCard();
 };
 
 const nextCard = () => {
