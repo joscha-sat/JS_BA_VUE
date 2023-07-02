@@ -13,7 +13,6 @@ declare module 'vue' {
     FontFamilySettings: typeof import('./src/components/settings/Font-Family-Settings.vue')['default']
     FontSizeSettings: typeof import('./src/components/settings/Font-Size-Settings.vue')['default']
     ImageCard: typeof import('./src/components/shared/Image-Card.vue')['default']
-    LeftRight: typeof import('./src/components/layouts/left-right.vue')['default']
     ListeningOne: typeof import('./src/components/tasks/listening/Listening-One.vue')['default']
     ListeningPlaySound: typeof import('./src/components/shared/ListeningPlaySound.vue')['default']
     RhymesOne: typeof import('./src/components/tasks/rhymes/Rhymes-One.vue')['default']

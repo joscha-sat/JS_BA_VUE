@@ -72,6 +72,8 @@ body {
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     word-break: break-all;
+    font-family: var(--font-family);
+    font-size: 18px;
 }
 
 /* A elements that don't have a class get default styles */

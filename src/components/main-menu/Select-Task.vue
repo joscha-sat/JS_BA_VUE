@@ -29,7 +29,6 @@ const playVoice = (txt) => {
 }
 
 const toTask = (to: string) => {
-    console.log('clicked')
     router.push({
         path: to
     })
