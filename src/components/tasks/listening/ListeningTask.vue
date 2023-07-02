@@ -18,8 +18,9 @@ import sawImg from '../../../assets/images/tasks/listening/saw.png'
 
 import success from '../../../assets/sounds/tasks/success.mp3'
 import fail from '../../../assets/sounds/tasks/fail.mp3'
+import { useSoundHelperStore } from "@/stores/SoundHelper.store";
 
-const voiceText = ref('What do you hear, click the Image below!');
+const voiceText = ref('Listen to the sound, then select what you have heard!');
 
 const speechStore = useTextToSpeechStore();
 const sounds = ref([rainSound, carSound, hammerSound]);
@@ -54,18 +55,25 @@ const clickImage = (clickedItem) => {
 const nextSound = () => {
     if (currentIndex.value < answers.value.length / 3 - 1) {
         currentIndex.value++;
+        isPlayedOnce.value = false
     } else {
         currentIndex.value = 0;
+        isPlayedOnce.value = false
     }
 }
 
 const previousSound = () => {
     if (currentIndex.value > 0) {
         currentIndex.value--;
+        isPlayedOnce.value = false
     } else {
         currentIndex.value = answers.value.length / 3 - 1;
+        isPlayedOnce.value = false
     }
 }
+
+const soundStore = useSoundHelperStore();
+const { audioIsPlaying, isPlayedOnce } = storeToRefs(soundStore)
 
 </script>
 
@@ -91,19 +99,23 @@ const previousSound = () => {
         <v-btn :icon="'mdi-volume-high'" color="primary" @click="speechStore.playVoice(voiceText)"></v-btn>
     </div>
 
-    <!-- ANSWERS -->
-    <div class="container">
-        <template v-for="(item, i) in answers" :key="i">
-            <ImageCard
-              v-if="item.id === currentIndex"
-              :bottom-txt="item.title"
-              :src="item.src"
-              has-bottom-txt
-              @clickImg="clickImage(item)"
-              @voice="speechStore.playVoice(item.title)"
-            />
-        </template>
-    </div>
+    <template v-if="!audioIsPlaying && isPlayedOnce">
+
+        <!-- ANSWERS -->
+        <div class="container">
+            <template v-for="(item, i) in answers" :key="i">
+                <ImageCard
+                  v-if="item.id === currentIndex"
+                  :bottom-txt="item.title"
+                  :src="item.src"
+                  has-bottom-txt
+                  @clickImg="clickImage(item)"
+                  @voice="speechStore.playVoice(item.title)"
+                />
+            </template>
+        </div>
+    </template>
+
 
 </template>
 

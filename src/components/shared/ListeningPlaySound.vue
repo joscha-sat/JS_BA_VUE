@@ -1,25 +1,13 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
 import listening from '../../assets/images/tasks/listening.png'
+import { useSoundHelperStore } from "@/stores/SoundHelper.store";
 
-const props = defineProps({
+defineProps({
     soundSrc: String,
 })
 
-const audioIsPlaying = ref(false);
-
-const playSound = () => {
-    // avoid playing sound multiple times at once
-    if (!audioIsPlaying.value) {
-        audioIsPlaying.value = true;
-        const audio = new Audio(props.soundSrc);
-        audio.addEventListener('ended', () => {
-            audioIsPlaying.value = false;
-        });
-        audio.play()
-    }
-
-}
+const soundStore = useSoundHelperStore();
 
 </script>
 
@@ -33,11 +21,12 @@ const playSound = () => {
           max-height="350px"
           style="cursor: pointer"
           width="100%"
-          @click="playSound"
+          @click="soundStore.playSound(soundSrc)"
         >
         </v-img>
 
-        <v-btn :icon="'mdi-play'" color="primary" style="transform: scale(2.5)" @click="playSound"></v-btn>
+        <v-btn :icon="'mdi-play'" color="primary" style="transform: scale(2.5)"
+               @click="soundStore.playSound(soundSrc)"></v-btn>
     </div>
 
 </template>
