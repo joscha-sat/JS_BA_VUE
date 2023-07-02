@@ -54,10 +54,15 @@ const clickImage = (clickedItem) => {
     if (clickedItem.correct) {
         audio.value = new Audio(success)
         audio.value.play();
-        nextSound();
+        setTimeout(() => {
+            nextSound();
+            soundStore.playSound(sounds.value[currentIndex.value])
+        }, 3500)
+
     } else {
         audio.value = new Audio(fail)
         audio.value.play()
+        isPlayedOnce.value = false;
     }
 }
 
@@ -82,7 +87,7 @@ const previousSound = () => {
 }
 
 const soundStore = useSoundHelperStore();
-const { audioIsPlaying, isPlayedOnce } = storeToRefs(soundStore)
+const { audioIsPlaying, isPlayedOnce, audioDuration } = storeToRefs(soundStore)
 
 </script>
 
@@ -91,16 +96,18 @@ const { audioIsPlaying, isPlayedOnce } = storeToRefs(soundStore)
 
 
     <div class="sound-container">
-        <!--    PREVIOUS CARD BUTTON   -->
-        <v-btn :icon="'mdi-arrow-left-thick'" color="primary" @click="previousSound()"></v-btn>
+
+        <h3>
+            Remaining duration: {{ soundStore.formatDuration() }}
+        </h3>
+
 
         <!--  SOUND TO PLAY  -->
         <ListeningPlaySound :sound-src="sounds[currentIndex]"/>
 
+
         {{ currentIndex + 1 }} / {{ answers.length / 3 }}
 
-        <!--    NEXT CARD BUTTON    -->
-        <v-btn :icon="'mdi-arrow-right-thick'" color="primary" @click="nextSound()"></v-btn>
     </div>
 
 
@@ -143,8 +150,6 @@ const { audioIsPlaying, isPlayedOnce } = storeToRefs(soundStore)
 .sound-container {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    gap: 2rem;
 }
 
 h1 {

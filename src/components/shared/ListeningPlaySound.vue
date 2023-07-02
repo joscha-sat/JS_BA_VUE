@@ -8,7 +8,6 @@ defineProps({
 })
 
 const soundStore = useSoundHelperStore();
-
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
