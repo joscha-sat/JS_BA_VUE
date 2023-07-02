@@ -1,6 +1,16 @@
 <template>
     <v-app>
         <v-app-bar :elevation='2' color='primary'>
+
+            <template #prepend>
+                <!-- HOME -->
+                <v-tooltip location="bottom" text="Home">
+                    <template v-slot:activator="{ props }">
+                        <v-btn :to='"/home"' icon='mdi-home' v-bind="props" variant='plain'></v-btn>
+                    </template>
+                </v-tooltip>
+            </template>
+
             <template #append>
                 <!-- SETTINGS -->
                 <v-tooltip location="bottom" text="Settings">
@@ -55,28 +65,6 @@ const toggleMascot = () => {
     isDog.value = !isDog.value
     localStorage.setItem('mascot', isDog.value ? 'dog' : 'cat')
 }
-
-// const toggleLanguage = () => {
-//     if (i18n.global.locale.value === 'en') {
-//         i18n.global.locale.value = "de"
-//         voice.value = voices.value.find(
-//           (voice) =>
-//             voice.name ===
-//             'Microsoft Conrad Online (Natural) - German (Germany)'
-//         );
-//         console.log(voice.value)
-//     } else {
-//         i18n.global.locale.value = "en"
-//         console.log(voices.value)
-//         voice.value = voices.value.find(
-//           (voice) =>
-//             voice.name ===
-//             'Microsoft Ryan Online (Natural) - English (United Kingdom)'
-//         );
-//
-//         console.log(voice.value)
-//     }
-// }
 
 onMounted(() => {
     // set primary color on load --> from old session (localStorage)
