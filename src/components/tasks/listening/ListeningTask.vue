@@ -3,6 +3,7 @@
 import rainSound from '../../../assets/sounds/tasks/listening/rain.mp3'
 import carSound from '../../../assets/sounds/tasks/listening/car.mp3'
 import hammerSound from '../../../assets/sounds/tasks/listening/hammer.mp3'
+import elephantSound from '../../../assets/sounds/tasks/listening/elephant.mp3'
 
 import rainImage from '../../../assets/images/tasks/listening/rain.jpg'
 import windImage from '../../../assets/images/tasks/listening/wind.jpg'
@@ -16,6 +17,10 @@ import hammerImg from '../../../assets/images/tasks/listening/hammer.png'
 import scissorImg from '../../../assets/images/tasks/listening/scissors.png'
 import sawImg from '../../../assets/images/tasks/listening/saw.png'
 
+import lionImg from '../../../assets/images/tasks/listening/lion.png'
+import horseImg from '../../../assets/images/tasks/listening/horse.png'
+import elephantImg from '../../../assets/images/tasks/listening/elephant.png'
+
 import success from '../../../assets/sounds/tasks/success.mp3'
 import fail from '../../../assets/sounds/tasks/fail.mp3'
 import { useSoundHelperStore } from "@/stores/SoundHelper.store";
@@ -23,7 +28,7 @@ import { useSoundHelperStore } from "@/stores/SoundHelper.store";
 const voiceText = ref('Listen to the sound, then select what you have heard!');
 
 const speechStore = useTextToSpeechStore();
-const sounds = ref([rainSound, carSound, hammerSound]);
+const sounds = ref([rainSound, carSound, hammerSound, elephantSound]);
 const currentIndex = ref(0);
 
 const answers = ref([
@@ -38,6 +43,10 @@ const answers = ref([
     { id: 2, src: hammerImg, title: 'hammer', correct: true },
     { id: 2, src: sawImg, title: 'saw', correct: false },
     { id: 2, src: scissorImg, title: 'scissor', correct: false },
+
+    { id: 3, src: lionImg, title: 'lion', correct: false },
+    { id: 3, src: elephantImg, title: 'elephant', correct: true },
+    { id: 3, src: horseImg, title: 'horse', correct: false },
 ])
 
 const clickImage = (clickedItem) => {
@@ -81,12 +90,14 @@ const { audioIsPlaying, isPlayedOnce } = storeToRefs(soundStore)
 <template>
 
 
-    <div class="word-container">
+    <div class="sound-container">
         <!--    PREVIOUS CARD BUTTON   -->
         <v-btn :icon="'mdi-arrow-left-thick'" color="primary" @click="previousSound()"></v-btn>
 
         <!--  SOUND TO PLAY  -->
         <ListeningPlaySound :sound-src="sounds[currentIndex]"/>
+
+        {{ currentIndex + 1 }} / {{ answers.length / 3 }}
 
         <!--    NEXT CARD BUTTON    -->
         <v-btn :icon="'mdi-arrow-right-thick'" color="primary" @click="nextSound()"></v-btn>
@@ -129,9 +140,11 @@ const { audioIsPlaying, isPlayedOnce } = storeToRefs(soundStore)
 
 }
 
-.word-container {
+.sound-container {
     display: flex;
     align-items: center;
+    gap: 2rem;
+    gap: 2rem;
 }
 
 h1 {
