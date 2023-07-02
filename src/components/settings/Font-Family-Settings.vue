@@ -8,6 +8,7 @@ watch(selectedFontFamily, () => {
 })
 
 const saveFontFamily = () => {
+    console.log(selectedFontFamily.value.toLowerCase())
     document.body.setAttribute('data-font-family', selectedFontFamily.value.toLowerCase());
     localStorage.setItem('font-family', selectedFontFamily.value);
 }

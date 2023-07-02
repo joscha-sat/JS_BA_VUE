@@ -1,49 +1,53 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
 import WordsService from "@/api/Words.service";
-import rainImage from "@/assets/images/tasks/listening/rain.jpg";
-import windImage from "@/assets/images/tasks/listening/wind.jpg";
+import mouseSrc from "@/assets/images/tasks/rhymes/mouse.png";
+import ballSrc from "@/assets/images/tasks/rhymes/ball.png";
+import treeSrc from "@/assets/images/tasks/rhymes/tree.png";
 import { useTextToSpeechStore } from "@/stores/TextToSpeech.store";
 
-
-interface Word {
+interface RhymeResponse {
     word: string,
     score: number,
     numSyllables: number
 }
 
 const wordsToBeRhymedTo = ref([
-    { id: 0, src: rainImage, title: 'Mouse' },
-    { id: 1, src: windImage, title: 'Ball' },
+    { id: 0, src: mouseSrc, title: 'Mouse' },
+    { id: 1, src: ballSrc, title: 'Ball' },
+    { id: 2, src: treeSrc, title: 'Tree' },
 ]);
-const enteredWord = ref();
+
 const rhymesArray = ref();
-
+const enteredWord = ref();
 const currentCard = ref(0);
-
-const doesItrhyme = ref(false);
+const doesItRhyme = ref();
 
 const check = async (currentCard: number) => {
     const rhymes = await WordsService.geRhymes(wordsToBeRhymedTo.value[currentCard].title);
-    rhymesArray.value = rhymes.data.map((items: Word) => items.word.toLowerCase());
+    rhymesArray.value = rhymes.data.map((items: RhymeResponse) => items.word.toLowerCase());
 
     if (enteredWord.value)
-        doesItrhyme.value = rhymesArray.value.includes(enteredWord.value.toLowerCase());
+        doesItRhyme.value = rhymesArray.value.includes(enteredWord.value.toLowerCase());
 };
 
 const nextCard = () => {
     if (currentCard.value < wordsToBeRhymedTo.value.length - 1) {
         currentCard.value++;
+        doesItRhyme.value = null;
     } else {
         currentCard.value = 0;
+        doesItRhyme.value = null;
     }
 }
 
 const previousCard = () => {
     if (currentCard.value > 0) {
         currentCard.value--;
+        doesItRhyme.value = null;
     } else {
         currentCard.value = wordsToBeRhymedTo.value.length - 1;
+        doesItRhyme.value = null;
     }
 }
 
@@ -70,6 +74,9 @@ const txtToSpeech = useTextToSpeechStore();
 
             <!--    NEXT CARD BUTTON    -->
             <v-btn :icon="'mdi-arrow-right-thick'" color="primary" @click="nextCard()"></v-btn>
+
+            <!--    CURRENT WORD NUMBER / TOTAL NUMBER OF WORDS      -->
+            {{ currentCard + 1 }} / {{ wordsToBeRhymedTo.length }}
         </div>
 
         <!--    USER TEXT INPUT    -->
@@ -86,6 +93,13 @@ const txtToSpeech = useTextToSpeechStore();
 
         <!--    CHECK RESULT BUTTON    -->
         <v-btn color="primary" @click="check(currentCard)">Check if my word rhymes</v-btn>
+
+        <div v-if="doesItRhyme === true">
+            YES WELL DONE!
+        </div>
+        <div v-if="doesItRhyme === false">
+            TRY AGAIN! UNKNOWN WORD OR NO RHYME.
+        </div>
     </div>
 </template>
 
