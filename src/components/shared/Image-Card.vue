@@ -4,17 +4,27 @@
 
 defineProps({
     title: String,
-    src: String
+    src: String,
+    hasBottomTxt: {
+        type: Boolean,
+        default: false
+    },
+    bottomTxt: String
 })
 
-defineEmits(['voice', 'toTask'])
+defineEmits(['voice', 'clickImg'])
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
     <v-card class="card">
+
+        <!--    TOP TITLE    -->
         <v-card-title
-          style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; overflow-wrap: break-word">
+          v-if="!hasBottomTxt"
+          style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; overflow-wrap: break-word"
+        >
+
             {{ title }}
 
             <v-btn @click="$emit('voice')">
@@ -22,17 +32,30 @@ defineEmits(['voice', 'toTask'])
             </v-btn>
         </v-card-title>
 
-        <v-card-text>
-
-        </v-card-text>
+        <!--    CENTER IMAGE    -->
         <v-img
           :src="src"
           class="img"
+          contain
+          max-height="300px"
           style="cursor: pointer"
           width="100%"
-          @click="$emit('toTask')"
+          @click="$emit('clickImg')"
         >
         </v-img>
+
+        <!--    BOTTOM TITLE     -->
+        <v-card-title
+          v-if="hasBottomTxt"
+          style="display: flex; justify-content: center; align-items: center; gap: 1rem"
+        >
+
+            <div>{{ bottomTxt }}</div>
+
+            <v-btn @click="$emit('voice')">
+                <v-icon>mdi-volume-high</v-icon>
+            </v-btn>
+        </v-card-title>
     </v-card>
 </template>
 
@@ -40,6 +63,8 @@ defineEmits(['voice', 'toTask'])
 <style lang="scss" scoped>
 .card {
     width: min(25rem, 100%);
+    display: flex;
+    flex-direction: column;
 
     // disables overflow
     .v-card-title {

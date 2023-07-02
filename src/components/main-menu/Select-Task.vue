@@ -8,15 +8,17 @@ import listening from '../../assets/images/tasks/listening.png';
 import rhymes from '../../assets/images/tasks/rhymes.png';
 import words from '../../assets/images/tasks/words.jpg';
 import iSound from '../../assets/images/tasks/initialSound.png';
+import syllables from '../../assets/images/tasks/syllables.jpg';
 import phonemes from '../../assets/images/tasks/phonemes.png';
 import router from "@/router";
 
 const tasks = ref([
     { i18n: 'TASKS.LISTENING', src: listening, to: 'listening' },
-    { i18n: 'TASKS.RHYMES', src: rhymes, to: 'listening' },
-    { i18n: 'TASKS.SENTENCES_AND_WORDS', src: words, to: 'listening' },
-    { i18n: 'TASKS.INITIAL_SOUND', src: iSound, to: 'listening' },
-    { i18n: 'TASKS.PHONEMES', src: phonemes, to: 'listening' }
+    { i18n: 'TASKS.RHYMES', src: rhymes, to: 'rhymes' },
+    { i18n: 'TASKS.SENTENCES_AND_WORDS', src: words, to: 'sentences_and_words' },
+    { i18n: 'TASKS.SYLLABLES', src: syllables, to: 'syllables' },
+    { i18n: 'TASKS.INITIAL_SOUND', src: iSound, to: 'initial_sound' },
+    { i18n: 'TASKS.PHONEMES', src: phonemes, to: 'phonemes' }
 ]);
 
 const playVoice = (txt) => {
@@ -44,7 +46,7 @@ const toTask = (to: string) => {
           :key="i"
           :src="task.src"
           :title="$t(task.i18n)"
-          @toTask="toTask(task.to)"
+          @clickImg="toTask(task.to)"
           @voice="playVoice($t(task.i18n))"
         />
     </div>
