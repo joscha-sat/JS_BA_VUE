@@ -25,7 +25,6 @@
                         </v-btn>
                     </template>
                 </v-tooltip>
-
             </template>
         </v-app-bar>
         <v-main>
