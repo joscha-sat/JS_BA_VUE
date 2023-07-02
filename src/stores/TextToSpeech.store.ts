@@ -55,5 +55,12 @@ export const useTextToSpeechStore = defineStore('textToSpeech', {
                 }
             });
         },
+
+        playVoice(txt) {
+            this.speech.value = useSpeechSynthesis(txt, {
+                voice: this.voice,
+            });
+            this.speech.value.speak();
+        },
     },
 });

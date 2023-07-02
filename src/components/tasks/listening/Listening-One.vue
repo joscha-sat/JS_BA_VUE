@@ -8,10 +8,8 @@ import fireImage from '../../../assets/images/tasks/listening/fire.png'
 
 import success from '../../../assets/sounds/tasks/success.mp3'
 import fail from '../../../assets/sounds/tasks/fail.mp3'
-import { useSpeechSynthesis } from "@vueuse/core";
 
 const speechStore = useTextToSpeechStore();
-const { speech, voice } = storeToRefs(speechStore);
 
 const answers = ref([
     { id: 0, src: rainImage, title: 'rain' },
@@ -30,12 +28,6 @@ const clickImage = (clickedItem) => {
     }
 }
 
-const playVoice = (txt) => {
-    speech.value = useSpeechSynthesis(txt, {
-        voice
-    })
-    speech.value.speak()
-}
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
@@ -50,7 +42,7 @@ const playVoice = (txt) => {
           :src="item.src"
           has-bottom-txt
           @clickImg="clickImage(item)"
-          @voice="playVoice(item.title)"
+          @voice="speechStore.playVoice(item.title)"
         />
     </div>
 
