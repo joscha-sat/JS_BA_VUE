@@ -27,7 +27,7 @@ defineEmits(['voice', 'clickImg'])
 
             {{ title }}
 
-            <v-btn @click="$emit('voice')">
+            <v-btn color="primary" @click="$emit('voice')">
                 <v-icon>mdi-volume-high</v-icon>
             </v-btn>
         </v-card-title>
@@ -52,7 +52,7 @@ defineEmits(['voice', 'clickImg'])
 
             <div>{{ bottomTxt }}</div>
 
-            <v-btn @click="$emit('voice')">
+            <v-btn color="primary" @click="$emit('voice')">
                 <v-icon>mdi-volume-high</v-icon>
             </v-btn>
         </v-card-title>

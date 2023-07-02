@@ -37,7 +37,7 @@ const playSound = () => {
         >
         </v-img>
 
-        <v-btn :icon="'mdi-play'" style="transform: scale(2.5)" @click="playSound"></v-btn>
+        <v-btn :icon="'mdi-play'" color="primary" style="transform: scale(2.5)" @click="playSound"></v-btn>
     </div>
 
 </template>

@@ -36,7 +36,7 @@ const playSound = () => {
     <h1 ref="txt"
         style="display: flex; align-items: center; justify-content: center; gap: 1rem;text-align: center; margin-top: 1rem">
         {{ $t('GREETINGS') }}
-        <v-btn icon="mdi-volume-high" @click="test"></v-btn>
+        <v-btn color="primary" icon="mdi-volume-high" @click="test"></v-btn>
     </h1>
 
     <div class="container">
