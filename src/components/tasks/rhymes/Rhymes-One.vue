@@ -4,6 +4,8 @@ import WordsService from "@/api/Words.service";
 import mouseSrc from "@/assets/images/tasks/rhymes/mouse.png";
 import ballSrc from "@/assets/images/tasks/rhymes/ball.png";
 import treeSrc from "@/assets/images/tasks/rhymes/tree.png";
+import sunSrc from "@/assets/images/tasks/rhymes/sun.png";
+import fishSrc from "@/assets/images/tasks/rhymes/fish.png";
 import { useTextToSpeechStore } from "@/stores/TextToSpeech.store";
 
 interface RhymeResponse {
@@ -16,6 +18,8 @@ const wordsToBeRhymedTo = ref([
     { id: 0, src: mouseSrc, title: 'Mouse' },
     { id: 1, src: ballSrc, title: 'Ball' },
     { id: 2, src: treeSrc, title: 'Tree' },
+    { id: 3, src: sunSrc, title: 'Sun' },
+    { id: 4, src: fishSrc, title: 'Fish' },
 ]);
 
 const rhymesArray = ref();
