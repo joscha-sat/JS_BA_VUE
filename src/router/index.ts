@@ -22,6 +22,11 @@ const router = createRouter({
             name: 'listening',
             component: () => import('../views/Listening.view.vue'),
         },
+        {
+            path: '/rhymes',
+            name: 'rhymes',
+            component: () => import('../views/Rhymes.view.vue'),
+        },
     ],
 });
 

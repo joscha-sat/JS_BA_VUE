@@ -16,6 +16,7 @@ declare module 'vue' {
     LeftRight: typeof import('./src/components/layouts/left-right.vue')['default']
     ListeningOne: typeof import('./src/components/tasks/listening/Listening-One.vue')['default']
     ListeningPlaySound: typeof import('./src/components/shared/ListeningPlaySound.vue')['default']
+    RhymesOne: typeof import('./src/components/tasks/rhymes/Rhymes-One.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SaveCancelButtons: typeof import('./src/components/shared/Save-Cancel-Buttons.vue')['default']

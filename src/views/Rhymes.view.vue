@@ -1,12 +1,12 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
-import ListeningOne from "@/components/tasks/listening/Listening-One.vue";
+
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
     <v-container>
-        <ListeningOne/>
+        <RhymesOne/>
     </v-container>
 </template>
 
@@ -14,4 +14,3 @@ import ListeningOne from "@/components/tasks/listening/Listening-One.vue";
 <style lang="scss" scoped>
 
 </style>
-
