@@ -70,6 +70,10 @@ defineEmits(['voice', 'clickImg'])
     .v-card-title {
         white-space: normal;
     }
+
+    &:hover {
+        filter: brightness(95%);
+    }
 }
 
 .img {

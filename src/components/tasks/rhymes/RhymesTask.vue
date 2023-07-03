@@ -75,6 +75,7 @@ const txtToSpeech = useTextToSpeechStore();
               :bottom-txt="wordsToBeRhymedTo[currentCard].title"
               :src="wordsToBeRhymedTo[currentCard].src"
               has-bottom-txt
+              @clickImg="txtToSpeech.playVoice(wordsToBeRhymedTo[currentCard].title)"
               @voice="txtToSpeech.playVoice(wordsToBeRhymedTo[currentCard].title)"
             />
 
@@ -82,7 +83,10 @@ const txtToSpeech = useTextToSpeechStore();
             <v-btn :icon="'mdi-arrow-right-thick'" color="primary" @click="nextCard()"></v-btn>
 
             <!--    CURRENT WORD NUMBER / TOTAL NUMBER OF WORDS      -->
-            {{ currentCard + 1 }} / {{ wordsToBeRhymedTo.length }}
+            <h3>
+                {{ currentCard + 1 }} / {{ wordsToBeRhymedTo.length }}
+            </h3>
+
         </div>
 
         <!--    USER TEXT INPUT    -->

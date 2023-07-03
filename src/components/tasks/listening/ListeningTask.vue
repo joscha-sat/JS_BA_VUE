@@ -76,18 +76,12 @@ const nextSound = () => {
     }
 }
 
-const previousSound = () => {
-    if (currentIndex.value > 0) {
-        currentIndex.value--;
-        isPlayedOnce.value = false
-    } else {
-        currentIndex.value = answers.value.length / 3 - 1;
-        isPlayedOnce.value = false
-    }
-}
-
 const soundStore = useSoundHelperStore();
-const { audioIsPlaying, isPlayedOnce, audioDuration } = storeToRefs(soundStore)
+const { audioIsPlaying, isPlayedOnce } = storeToRefs(soundStore)
+
+onMounted(() => {
+    isPlayedOnce.value = false
+})
 
 </script>
 
@@ -101,15 +95,14 @@ const { audioIsPlaying, isPlayedOnce, audioDuration } = storeToRefs(soundStore)
             Remaining duration: {{ soundStore.formatDuration() }}
         </h3>
 
-
         <!--  SOUND TO PLAY  -->
         <ListeningPlaySound :sound-src="sounds[currentIndex]"/>
 
-
-        {{ currentIndex + 1 }} / {{ answers.length / 3 }}
+        <h3>
+            {{ currentIndex + 1 }} / {{ answers.length / 3 }}
+        </h3>
 
     </div>
-
 
     <!--  TEXT WHAT TO DO  -->
     <div style="display: flex; align-items: center; gap: 1rem; justify-content: center">
@@ -133,8 +126,7 @@ const { audioIsPlaying, isPlayedOnce, audioDuration } = storeToRefs(soundStore)
             </template>
         </div>
     </template>
-
-
+    
 </template>
 
 <!-- SCSS ---------------------------------------------------------// -->
