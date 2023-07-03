@@ -31,10 +31,16 @@ const check = async (currentCard: number) => {
     const rhymes = await WordsService.geRhymes(wordsToBeRhymedTo.value[currentCard].title);
     rhymesArray.value = rhymes.data.map((items: RhymeResponse) => items.word.toLowerCase());
 
-    if (enteredWord.value)
+    if (enteredWord.value) {
         doesItRhyme.value = rhymesArray.value.includes(enteredWord.value.toLowerCase());
+    }
 
-    // if (doesItRhyme) nextCard();
+    if (doesItRhyme.value && enteredWord.value) {
+        txtToSpeech.playVoice(`the words ${ wordsToBeRhymedTo.value[currentCard].title } and ${ enteredWord.value } do rhyme! bravo!`);
+    } else if (!doesItRhyme.value && enteredWord.value) {
+        txtToSpeech.playVoice(`either I do not know your word or they do not rhyme, try again!`);
+    }
+
 };
 
 const nextCard = () => {
@@ -104,12 +110,12 @@ const txtToSpeech = useTextToSpeechStore();
         <!--    CHECK RESULT BUTTON    -->
         <v-btn color="primary" @click="check(currentCard)">Check if my word rhymes</v-btn>
 
-        <div v-if="doesItRhyme === true">
-            YES WELL DONE!
-        </div>
-        <div v-if="doesItRhyme === false">
-            TRY AGAIN! UNKNOWN WORD OR NO RHYME.
-        </div>
+        <!--        <div v-if="doesItRhyme === true">-->
+        <!--            YES WELL DONE!-->
+        <!--        </div>-->
+        <!--        <div v-if="doesItRhyme === false">-->
+        <!--            TRY AGAIN! UNKNOWN WORD OR NO RHYME.-->
+        <!--        </div>-->
     </div>
 </template>
 
