@@ -4,6 +4,7 @@ import rainSound from '../../../assets/sounds/tasks/listening/rain.mp3'
 import carSound from '../../../assets/sounds/tasks/listening/car.mp3'
 import hammerSound from '../../../assets/sounds/tasks/listening/hammer.mp3'
 import elephantSound from '../../../assets/sounds/tasks/listening/elephant.mp3'
+import pingpongSound from '../../../assets/sounds/tasks/listening/pingpong.mp3'
 
 import rainImage from '../../../assets/images/tasks/listening/rain.jpg'
 import windImage from '../../../assets/images/tasks/listening/wind.jpg'
@@ -21,14 +22,19 @@ import lionImg from '../../../assets/images/tasks/listening/lion.png'
 import horseImg from '../../../assets/images/tasks/listening/horse.png'
 import elephantImg from '../../../assets/images/tasks/listening/elephant.png'
 
+import tabletennisImg from '../../../assets/images/tasks/listening/table-tennis.png'
+import tennisImg from '../../../assets/images/tasks/listening/tennis.png'
+import badmintonImg from '../../../assets/images/tasks/listening/badminton.png'
+
 import success from '../../../assets/sounds/tasks/success.mp3'
 import fail from '../../../assets/sounds/tasks/fail.mp3'
 import { useSoundHelperStore } from "@/stores/SoundHelper.store";
+import router from "@/router";
 
 const voiceText = ref('Listen to the sound, then select what you have heard!');
 
 const speechStore = useTextToSpeechStore();
-const sounds = ref([rainSound, carSound, hammerSound, elephantSound]);
+const sounds = ref([rainSound, carSound, hammerSound, elephantSound, pingpongSound]);
 const currentIndex = ref(0);
 
 const answers = ref([
@@ -47,6 +53,10 @@ const answers = ref([
     { id: 3, src: lionImg, title: 'lion', correct: false },
     { id: 3, src: elephantImg, title: 'elephant', correct: true },
     { id: 3, src: horseImg, title: 'horse', correct: false },
+
+    { id: 4, src: tennisImg, title: 'tennis', correct: false },
+    { id: 4, src: badmintonImg, title: 'badminton', correct: false },
+    { id: 4, src: tabletennisImg, title: 'table-tennis', correct: true },
 ])
 
 const clickImage = (clickedItem) => {
@@ -54,15 +64,27 @@ const clickImage = (clickedItem) => {
     if (clickedItem.correct) {
         audio.value = new Audio(success)
         audio.value.play();
-        setTimeout(() => {
-            nextSound();
-            soundStore.playSound(sounds.value[currentIndex.value])
-        }, 3500)
+        if (currentIndex.value < answers.value.length / 3 - 1) {
+            setTimeout(() => {
+                nextSound();
+                soundStore.playSound(sounds.value[currentIndex.value])
+            }, 3500)
+        } else {
+            setTimeout(() => {
+                router.push({
+                    path: '/home'
+                })
+            }, 3500)
+
+        }
 
     } else {
         audio.value = new Audio(fail)
         audio.value.play()
         isPlayedOnce.value = false;
+        setTimeout(() => {
+            soundStore.playSound(sounds.value[currentIndex.value])
+        }, 2500)
     }
 }
 
@@ -126,7 +148,7 @@ onMounted(() => {
             </template>
         </div>
     </template>
-    
+
 </template>
 
 <!-- SCSS ---------------------------------------------------------// -->
