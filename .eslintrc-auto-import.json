@@ -78,6 +78,7 @@
     "watchSyncEffect": true,
     "toValue": true,
     "useMascotStore": true,
-    "useTextToSpeechStore": true
+    "useTextToSpeechStore": true,
+    "useSoundHelperStore": true
   }
 }
