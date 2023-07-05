@@ -20,5 +20,6 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SaveCancelButtons: typeof import('./src/components/shared/Save-Cancel-Buttons.vue')['default']
     SelectTask: typeof import('./src/components/main-menu/Select-Task.vue')['default']
+    SentenceTask: typeof import('./src/components/tasks/sentences_and_words/SentenceTask.vue')['default']
   }
 }

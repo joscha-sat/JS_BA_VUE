@@ -20,12 +20,17 @@ const router = createRouter({
         {
             path: '/listening',
             name: 'listening',
-            component: () => import('../views/Listening.view.vue'),
+            component: () => import('../views/tasks/Listening.view.vue'),
         },
         {
             path: '/rhymes',
             name: 'rhymes',
-            component: () => import('../views/Rhymes.view.vue'),
+            component: () => import('../views/tasks/Rhymes.view.vue'),
+        },
+        {
+            path: '/sentences_and_words',
+            name: 'sentences_and_words',
+            component: () => import('../views/tasks/Sentence.view.vue'),
         },
     ],
 });
