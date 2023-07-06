@@ -1,17 +1,39 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
-
 const words = reactive([
-    { text: 'This', placed: false },
-    { text: 'an', placed: false },
-    { text: 'example', placed: false },
+    { id: 0, text: 'your', placed: false },
+    { id: 0, text: 'Play', placed: false },
+    { id: 0, text: 'friends', placed: false },
+    { id: 0, text: 'with', placed: false },
+
+    { id: 1, text: 'rubs', placed: false },
+    { id: 1, text: 'love', placed: false },
+    { id: 1, text: 'belly', placed: false },
+    { id: 1, text: 'Dogs', placed: false },
+
+    { id: 2, text: 'cream', placed: false },
+    { id: 2, text: 'I', placed: false },
+    { id: 2, text: 'ice', placed: false },
+    { id: 2, text: 'like', placed: false },
+
+    { id: 3, text: 'melodies', placed: false },
+    { id: 3, text: 'sing', placed: false },
+    { id: 3, text: 'Birds', placed: false },
+    { id: 3, text: 'sweet', placed: false },
+
+    { id: 4, text: 'Believe', placed: false },
+    { id: 4, text: 'your', placed: false },
+    { id: 4, text: 'in', placed: false },
+    { id: 4, text: 'dreams', placed: false },
 ]);
+
+const currentIndex = ref(0);
 
 const lines = reactive([
     { wordIndex: null },
     { wordIndex: null },
     { wordIndex: null },
-
+    { wordIndex: null },
 ]);
 
 const activeLineIndex = ref(null);
@@ -82,14 +104,67 @@ const isLineDroppable = (lineIndex) => {
     return draggedLineIndex.value === lineIndex;
 };
 
+const correctAnswers = (sentence) => {
+    switch (sentence) {
+        case 'Play with your friends':
+            correct.value = true;
+            break;
+        case 'Dogs love belly rubs':
+            correct.value = true;
+            break;
+        case 'I like ice cream':
+            correct.value = true;
+            break;
+        case 'Birds sing sweet melodies':
+            correct.value = true;
+            break;
+        case 'Believe in your dreams':
+            correct.value = true;
+            break;
+    }
 
-const result = (): boolean => {
+}
+
+
+const speechStore = useTextToSpeechStore();
+
+const result = () => {
     const sentence = lines
       .map((line) => (line.wordIndex !== null ? words[line.wordIndex].text : ''))
       .join(' ');
 
-    if (sentence === 'This an example') correct.value = true
+    correctAnswers(sentence);
+
+    if (correct.value) {
+
+        speechStore.playVoice(sentence + 'is the correct sentence! bravo!')
+
+        setTimeout(() => {
+            nextWords();
+            correct.value = false
+        }, 4000)
+    }
+
 }
+
+const nextWords = () => {
+    if (currentIndex.value < words.length / 3 - 1) {
+        currentIndex.value++;
+        lines.forEach((item) => {
+            item.wordIndex = null
+        })
+    } else {
+        lines.forEach((item) => {
+            item.wordIndex = null
+        });
+        words.forEach((item) => {
+            item.placed = false
+        })
+        currentIndex.value = 0;
+    }
+}
+
+
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
@@ -103,7 +178,7 @@ const result = (): boolean => {
             <div
               v-for="(line, lineIndex) in lines"
               :key="lineIndex"
-              :class="['line', { 'active-line': isLineActive(lineIndex), droppable: isLineDroppable(lineIndex) }]"
+              :class="['line', { 'active-line': isLineActive(lineIndex), droppable: isLineDroppable(lineIndex), 'line-correct': correct }]"
               @dragenter="dragEnter(lineIndex)"
               @dragleave="dragLeave(lineIndex)"
               @drop="drop($event, lineIndex)"
@@ -122,16 +197,19 @@ const result = (): boolean => {
 
         <!-- WORDS -->
         <div class="words">
-            <v-card
-              v-for="(word, i) in words"
-              :key="i" :draggable="!word.placed"
-              class="word-cards"
-              @dragstart="dragStart($event, i)"
-            >
-                <v-card-title v-if="!word.placed">
-                    {{ word.text }}
-                </v-card-title>
-            </v-card>
+            <template v-for="(word, i) in words" :key="i">
+                <v-card
+                  v-if="word.id === currentIndex"
+                  :draggable="!word.placed"
+                  class="word-cards"
+                  @dragstart="dragStart($event, i)"
+                >
+                    <v-card-title v-if="!word.placed">
+                        {{ word.text }}
+                    </v-card-title>
+                </v-card>
+            </template>
+
         </div>
     </div>
 
@@ -188,8 +266,11 @@ const result = (): boolean => {
     cursor: pointer;
 }
 
+.line-correct {
+    background-color: #78af78;
+}
+
 .line::before {
-    content: "";
     position: absolute;
     top: -5px;
     left: -5px;
@@ -198,7 +279,6 @@ const result = (): boolean => {
     border: 2px dashed #aaa;
     opacity: 0;
     transition: opacity 0.3s ease;
-    pointer-events: none;
 }
 
 .line.active-line::before {
