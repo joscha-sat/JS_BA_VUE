@@ -33,11 +33,7 @@ const playSound = () => {
 <!-- HTML ----------------------------------------------------------//-->
 <template>
 
-    <h1 ref="txt"
-        style="display: flex; align-items: center; justify-content: center; gap: 1rem;text-align: center; margin-top: 1rem">
-        {{ $t('GREETINGS') }}
-        <v-btn color="primary" icon="mdi-volume-high" @click="test"></v-btn>
-    </h1>
+    <TitleWithSound title="Hello and welcome to listen, play learn! Choose a task"/>
 
     <div class="container">
         <div class="left"></div>

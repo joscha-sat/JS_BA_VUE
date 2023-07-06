@@ -127,10 +127,7 @@ onMounted(() => {
     </div>
 
     <!--  TEXT WHAT TO DO  -->
-    <div style="display: flex; align-items: center; gap: 1rem; justify-content: center">
-        <h1>{{ voiceText }}</h1>
-        <v-btn :icon="'mdi-volume-high'" color="primary" @click="speechStore.playVoice(voiceText)"></v-btn>
-    </div>
+    <TitleWithSound title="Listen to the sound, then select what you have heard!"/>
 
     <template v-if="!audioIsPlaying && isPlayedOnce">
 
