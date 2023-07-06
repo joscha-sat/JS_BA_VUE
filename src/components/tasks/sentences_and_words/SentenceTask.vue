@@ -39,6 +39,7 @@ const lines = reactive([
 const activeLineIndex = ref(null);
 const isSentenceValid = ref(false);
 const correct = ref(false);
+const falseSentence = ref(false);
 const draggedLineIndex = ref(null);
 
 const dragStart = (event, index) => {
@@ -136,19 +137,22 @@ const result = () => {
     correctAnswers(sentence);
 
     if (correct.value) {
-
         speechStore.playVoice(sentence + 'is the correct sentence! bravo!')
 
         setTimeout(() => {
             nextWords();
             correct.value = false
+            falseSentence.value = false;
         }, 4000)
     }
+
+    falseSentence.value = lines.every((word) => word.wordIndex != null);
 
 }
 
 const nextWords = () => {
-    if (currentIndex.value < words.length / 3 - 1) {
+    // take into account that 4 words have the same index, so the actual length is: length / 3 - 1
+    if (currentIndex.value < words.length / 4 - 1) {
         currentIndex.value++;
         lines.forEach((item) => {
             item.wordIndex = null
@@ -178,21 +182,28 @@ const nextWords = () => {
             <div
               v-for="(line, lineIndex) in lines"
               :key="lineIndex"
-              :class="['line', { 'active-line': isLineActive(lineIndex), droppable: isLineDroppable(lineIndex), 'line-correct': correct }]"
+              :class="['line', { 'active-line': isLineActive(lineIndex), droppable: isLineDroppable(lineIndex), 'line-correct': correct, 'line-incorrect': falseSentence && !correct }]"
               @dragenter="dragEnter(lineIndex)"
               @dragleave="dragLeave(lineIndex)"
               @drop="drop($event, lineIndex)"
               @dragover.prevent
             >
-        <span
-          v-if="line.wordIndex !== null"
-          draggable="true"
-          @click="clearLine(lineIndex)"
-          @dragstart="dragStart($event, line.wordIndex)"
-        >
-          {{ words[line.wordIndex].text }}
-        </span>
+                <span
+                  v-if="line.wordIndex !== null"
+                  draggable="true"
+                  @click="clearLine(lineIndex)"
+                  @dragstart="dragStart($event, line.wordIndex)"
+                >
+                 {{ words[line.wordIndex].text }}
+                  </span>
             </div>
+
+            <!--      DISPLAY CURRENT STATE / MAX TASKS      -->
+
+            <h3 style="margin-left: 2rem">
+                {{ currentIndex + 1 }} / {{ words.length / 4 }}
+            </h3>
+
         </div>
 
         <!-- WORDS -->
@@ -268,6 +279,10 @@ const nextWords = () => {
 
 .line-correct {
     background-color: #78af78;
+}
+
+.line-incorrect {
+    background-color: lightcoral;
 }
 
 .line::before {
