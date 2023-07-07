@@ -84,9 +84,6 @@ const clearLine = (lineIndex) => {
     const wordIndex = lines[lineIndex].wordIndex;
     lines[lineIndex].wordIndex = null;
     words[wordIndex].placed = false;
-
-    // Check if the sentence is still valid after clearing the line
-    isSentenceValid.value = lines.every((line) => line.wordIndex !== null);
 };
 
 const dragEnter = (lineIndex) => {
@@ -151,9 +148,7 @@ const result = () => {
             falseSentence.value = false;
         }, 4000)
     }
-
     falseSentence.value = lines.every((word) => word.wordIndex != null);
-
 }
 
 const nextWords = () => {
@@ -216,14 +211,17 @@ const nextWords = () => {
         <div class="words">
             <template v-for="(word, i) in words" :key="i">
                 <v-card
+
                   v-if="word.id === currentIndex"
                   :draggable="!word.placed"
                   class="word-cards"
                   @dragstart="dragStart($event, i)"
                 >
                     <v-card-title v-if="!word.placed">
-                        {{ word.text }}
+                        {{ word.text }} |
+                        <v-icon @click="speechStore.playVoice(word.text)">mdi-volume-high</v-icon>
                     </v-card-title>
+
                 </v-card>
             </template>
 
