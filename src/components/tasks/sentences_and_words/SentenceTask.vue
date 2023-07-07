@@ -219,7 +219,7 @@ const nextWords = () => {
                 >
                     <v-card-title v-if="!word.placed">
                         {{ word.text }} |
-                        <v-icon @click="speechStore.playVoice(word.text)">mdi-volume-high</v-icon>
+                        <v-icon color="primary" @click="speechStore.playVoice(word.text)">mdi-volume-high</v-icon>
                     </v-card-title>
 
                 </v-card>
