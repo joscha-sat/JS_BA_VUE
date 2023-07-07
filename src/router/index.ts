@@ -37,6 +37,11 @@ const router = createRouter({
             name: 'syllables',
             component: () => import('../views/tasks/Syllables.view.vue'),
         },
+        {
+            path: '/initial_sound',
+            name: 'initial_sound',
+            component: () => import('../views/tasks/InitialSound.view.vue'),
+        },
     ],
 });
 

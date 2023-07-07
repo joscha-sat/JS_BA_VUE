@@ -113,9 +113,10 @@ const txtToSpeech = useTextToSpeechStore();
             </h3>
         </div>
 
+        <!--   NUMBER OF SYLLABLES INPUT     -->
         <v-text-field
           v-model="enteredSyllableNumber"
-          class="mt-8"
+          class="mt-8 input"
           placeholder="Enter the number of syllables!"
           type="number"
         >
@@ -137,14 +138,19 @@ const txtToSpeech = useTextToSpeechStore();
 <!-- SCSS ---------------------------------------------------------// -->
 <style lang="scss" scoped>
 .container {
-    width: min(45rem, 100%);
+    width: min(55rem, 100%);
     margin: auto;
 
     .slider-container {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 2rem;
         margin-top: 2rem;
+    }
+
+    .input {
+        margin: auto;
     }
 }
 </style>

@@ -175,7 +175,7 @@ const nextWords = () => {
 <!-- HTML ----------------------------------------------------------//-->
 <template>
 
-    <TitleWithSound title="DRAG AND DROP TO FORM A SENTENCE"/>
+    <TitleWithSound title="Drag and drop to form a valid sentence"/>
 
     <div class="container">
         <!--    DROP ZONES    -->
