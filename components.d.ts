@@ -13,6 +13,7 @@ declare module 'vue' {
     FontFamilySettings: typeof import('./src/components/settings/Font-Family-Settings.vue')['default']
     FontSizeSettings: typeof import('./src/components/settings/Font-Size-Settings.vue')['default']
     ImageCard: typeof import('./src/components/shared/Image-Card.vue')['default']
+    ImageSlider: typeof import('./src/components/shared/ImageSlider.vue')['default']
     ListeningPlaySound: typeof import('./src/components/shared/ListeningPlaySound.vue')['default']
     ListeningTask: typeof import('./src/components/tasks/listening/ListeningTask.vue')['default']
     RhymesTask: typeof import('./src/components/tasks/rhymes/RhymesTask.vue')['default']
@@ -21,6 +22,7 @@ declare module 'vue' {
     SaveCancelButtons: typeof import('./src/components/shared/Save-Cancel-Buttons.vue')['default']
     SelectTask: typeof import('./src/components/main-menu/Select-Task.vue')['default']
     SentenceTask: typeof import('./src/components/tasks/sentences_and_words/SentenceTask.vue')['default']
+    SyllableTask: typeof import('./src/components/tasks/syllables/SyllableTask.vue')['default']
     TitleWithSound: typeof import('./src/components/shared/TitleWithSound.vue')['default']
   }
 }

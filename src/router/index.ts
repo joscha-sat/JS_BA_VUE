@@ -32,6 +32,11 @@ const router = createRouter({
             name: 'sentences_and_words',
             component: () => import('../views/tasks/Sentence.view.vue'),
         },
+        {
+            path: '/syllables',
+            name: 'syllables',
+            component: () => import('../views/tasks/Syllables.view.vue'),
+        },
     ],
 });
 

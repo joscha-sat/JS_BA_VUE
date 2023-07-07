@@ -1,6 +1,8 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
-const words = reactive([
+import Sentence from "@/classes/Sentence.class";
+
+const words: Sentence[] = reactive([
     { id: 0, text: 'your', placed: false },
     { id: 0, text: 'Play', placed: false },
     { id: 0, text: 'friends', placed: false },
@@ -29,7 +31,11 @@ const words = reactive([
 
 const currentIndex = ref(0);
 
-const lines = reactive([
+interface Line {
+    wordIndex: number | null,
+}
+
+const lines: Line[] = reactive([
     { wordIndex: null },
     { wordIndex: null },
     { wordIndex: null },
@@ -239,7 +245,7 @@ const nextWords = () => {
     justify-content: center;
     align-items: center;
     gap: 3rem;
-    min-height: 50dvh;
+    margin-top: 5rem;
 }
 
 .words {

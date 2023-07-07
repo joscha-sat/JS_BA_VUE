@@ -30,14 +30,15 @@ import success from '../../../assets/sounds/tasks/success.mp3'
 import fail from '../../../assets/sounds/tasks/fail.mp3'
 import { useSoundHelperStore } from "@/stores/SoundHelper.store";
 import router from "@/router";
+import ListeningAnswer from "@/classes/ListeningAnswer.class";
+import { Ref } from "vue";
 
-const voiceText = ref('Listen to the sound, then select what you have heard!');
 
 const speechStore = useTextToSpeechStore();
 const sounds = ref([rainSound, carSound, hammerSound, elephantSound, pingpongSound]);
 const currentIndex = ref(0);
 
-const answers = ref([
+const answers: Ref<ListeningAnswer[]> = ref([
     { id: 0, src: rainImage, title: 'rain', correct: true },
     { id: 0, src: windImage, title: 'wind', correct: false },
     { id: 0, src: fireImage, title: 'fire', correct: false },

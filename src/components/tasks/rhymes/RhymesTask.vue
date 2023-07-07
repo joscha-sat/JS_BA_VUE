@@ -7,6 +7,7 @@ import treeSrc from "@/assets/images/tasks/rhymes/tree.png";
 import sunSrc from "@/assets/images/tasks/rhymes/sun.png";
 import fishSrc from "@/assets/images/tasks/rhymes/fish.png";
 import { useTextToSpeechStore } from "@/stores/TextToSpeech.store";
+import { Ref } from "vue";
 
 interface RhymeResponse {
     word: string,
@@ -14,7 +15,13 @@ interface RhymeResponse {
     numSyllables: number
 }
 
-const wordsToBeRhymedTo = ref([
+interface WordsToRhyme {
+    id: number,
+    src: any,
+    title: string
+}
+
+const wordsToBeRhymedTo: Ref<WordsToRhyme[]> = ref([
     { id: 0, src: mouseSrc, title: 'Mouse' },
     { id: 1, src: ballSrc, title: 'Ball' },
     { id: 2, src: treeSrc, title: 'Tree' },
