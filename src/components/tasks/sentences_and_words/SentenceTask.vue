@@ -43,7 +43,6 @@ const lines: Line[] = reactive([
 ]);
 
 const activeLineIndex = ref(null);
-const isSentenceValid = ref(false);
 const correct = ref(false);
 const falseSentence = ref(false);
 const draggedLineIndex = ref(null);
@@ -211,13 +210,12 @@ const nextWords = () => {
         <div class="words">
             <template v-for="(word, i) in words" :key="i">
                 <v-card
-
-                  v-if="word.id === currentIndex"
+                  v-if="word.id === currentIndex && !word.placed"
                   :draggable="!word.placed"
                   class="word-cards"
                   @dragstart="dragStart($event, i)"
                 >
-                    <v-card-title v-if="!word.placed">
+                    <v-card-title>
                         {{ word.text }} |
                         <v-icon color="primary" @click="speechStore.playVoice(word.text)">mdi-volume-high</v-icon>
                     </v-card-title>
@@ -254,6 +252,11 @@ const nextWords = () => {
         cursor: grab;
     }
 
+    .word-cards {
+        padding-inline: 0.75rem;
+        padding-block: 0.25rem;
+    }
+
 }
 
 .lines {
@@ -265,7 +268,7 @@ const nextWords = () => {
     flex: 1;
     border: 2px dashed #ccc;
     width: 175px;
-    min-height: 40px;
+    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;

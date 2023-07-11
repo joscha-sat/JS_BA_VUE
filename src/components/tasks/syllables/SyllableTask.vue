@@ -84,7 +84,6 @@ const previousCard = () => {
         currentCard.value = syllables.length - 1;
     }
 }
-const txtToSpeech = useTextToSpeechStore();
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
