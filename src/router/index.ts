@@ -42,6 +42,11 @@ const router = createRouter({
             name: 'initial_sound',
             component: () => import('../views/tasks/InitialSound.view.vue'),
         },
+        {
+            path: '/phonemes',
+            name: 'phonemes',
+            component: () => import('../views/tasks/Phonemes.view.vue'),
+        },
     ],
 });
 

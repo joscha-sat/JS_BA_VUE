@@ -152,7 +152,7 @@ const result = () => {
 }
 
 const nextWords = () => {
-    // take into account that 4 words have the same index, so the actual length is: length / 3 - 1
+    // take into account that 4 words have the same index, so the actual length is: length / 4 - 1
     if (currentIndex.value < words.length / 4 - 1) {
         currentIndex.value++;
         lines.forEach((item) => {
@@ -175,7 +175,7 @@ const nextWords = () => {
 <!-- HTML ----------------------------------------------------------//-->
 <template>
 
-    <TitleWithSound title="Drag and drop to form a valid sentence"/>
+    <TitleWithSound title="Drag and drop all given words to form a valid sentence"/>
 
     <div class="container">
         <!--    DROP ZONES    -->
@@ -287,20 +287,5 @@ const nextWords = () => {
 
 .line-incorrect {
     background-color: lightcoral;
-}
-
-.line::before {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 2px dashed #aaa;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.line.active-line::before {
-    opacity: 1;
 }
 </style>
