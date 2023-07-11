@@ -46,7 +46,7 @@ const onDrop = (event, list) => {
     }
 
     answer.list = list;
-    correct.value = answer.correct;
+    correct.value = answer.correct && answer.list === 2;
 };
 </script>
 
@@ -64,7 +64,13 @@ const onDrop = (event, list) => {
         />
 
 
-        <div class="drop-field" @drop="onDrop($event, 2)" @dragenter.prevent @dragover.prevent>
+        <div
+          :class="[{'drop-field-correct': correct, 'drop-field-incorrect': getList(2).length > 0 && !correct }]"
+          class="drop-field"
+          @drop="onDrop($event, 2)"
+          @dragenter.prevent
+          @dragover.prevent
+        >
             <div
               v-for="answer in getList(2)"
               :key="answer.id"
@@ -72,7 +78,10 @@ const onDrop = (event, list) => {
               draggable="true"
               @dragstart="dragStart($event, answer)"
             >
-                {{ answer.word }}
+                <h1>
+                    {{ answer.word }}
+                </h1>
+
             </div>
         </div>
 
@@ -114,13 +123,29 @@ const onDrop = (event, list) => {
 
     .drop-field {
         margin-top: 2rem;
-        border: 1px solid black;
+        border: 2px dashed #ccc;
         width: 400px;
         height: 100px;
 
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .drop-field.active-line {
+        background-color: lightblue;
+    }
+
+    .drop-field span {
+        cursor: pointer;
+    }
+
+    .drop-field-correct {
+        background-color: #78af78;
+    }
+
+    .drop-field-incorrect {
+        background-color: lightcoral;
     }
 }
 </style>
