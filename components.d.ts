@@ -28,5 +28,6 @@ declare module 'vue' {
     SentenceTask: typeof import('./src/components/tasks/sentences_and_words/SentenceTask.vue')['default']
     SyllableTask: typeof import('./src/components/tasks/syllables/SyllableTask.vue')['default']
     TitleWithSound: typeof import('./src/components/shared/TitleWithSound.vue')['default']
+    TutorialDialog: typeof import('./src/components/dialogs/tutorial-dialog.vue')['default']
   }
 }

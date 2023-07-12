@@ -1,15 +1,15 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
-
 import HelpMeBtn from "@/components/shared/HelpMeBtn.vue";
+
+const tutorialText = 'In the middle of the screen you see an image together with a word. You can listen to the word if you click on the volume button. Below you see a textfield. Now enter words you believe rhyme to the given word. You can check your answer with the button below'
+
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
     <div class="header">
-
         <HelpMeBtn/>
-
         <div>
             rhymes are checked by
             <a href="https://rhymebrain.com/api.html" target="_blank">RhymeBrain API</a>
@@ -18,7 +18,11 @@ import HelpMeBtn from "@/components/shared/HelpMeBtn.vue";
 
     <v-container>
         <RhymesTask/>
+
+        <TutorialDialog :txt="tutorialText" title="What do I need to do?"/>
     </v-container>
+
+
 </template>
 
 <!-- SCSS ---------------------------------------------------------// -->

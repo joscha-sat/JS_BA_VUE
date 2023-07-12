@@ -70,9 +70,7 @@ const previousCard = () => {
         doesItRhyme.value = null;
     }
 }
-
 const txtToSpeech = useTextToSpeechStore();
-
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
