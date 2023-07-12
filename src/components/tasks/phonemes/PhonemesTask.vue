@@ -3,10 +3,16 @@
 
 import beach from '../../../assets/images/tasks/phonemes/beach.jpg'
 import cloud from '../../../assets/images/tasks/phonemes/cloud.png'
+import jungle from '../../../assets/images/tasks/phonemes/jungle.jpg'
+import cloak from '../../../assets/images/tasks/phonemes/cloak.png'
+import dolphin from '../../../assets/images/tasks/phonemes/dolphin.png'
 
 const words = reactive([
     { id: 0, word: 'beach', src: beach },
-    { id: 1, word: 'cloud', src: cloud }
+    { id: 1, word: 'cloud', src: cloud },
+    { id: 2, word: 'jungle', src: jungle },
+    { id: 2, word: 'cloak', src: cloak },
+    { id: 3, word: 'dolphin', src: dolphin },
 ]);
 
 const answers = reactive([
@@ -16,10 +22,25 @@ const answers = reactive([
     { index: 0, id: 3, word: 'baach', list: 1, correct: false },
 
 
-    { index: 1, id: 0, word: 'claud', list: 1, correct: false },
-    { index: 1, id: 1, word: 'cluod', list: 1, correct: false },
-    { index: 1, id: 2, word: 'clowed', list: 1, correct: false },
-    { index: 1, id: 3, word: 'cloud', list: 1, correct: true },
+    { index: 1, id: 4, word: 'claud', list: 1, correct: false },
+    { index: 1, id: 5, word: 'cluod', list: 1, correct: false },
+    { index: 1, id: 6, word: 'clowed', list: 1, correct: false },
+    { index: 1, id: 7, word: 'cloud', list: 1, correct: true },
+
+    { index: 2, id: 8, word: 'jungle', list: 1, correct: true },
+    { index: 2, id: 9, word: 'djangle', list: 1, correct: false },
+    { index: 2, id: 10, word: 'jungel', list: 1, correct: false },
+    { index: 2, id: 11, word: 'djungle', list: 1, correct: false },
+
+    { index: 3, id: 12, word: 'cloke', list: 1, correct: false },
+    { index: 3, id: 13, word: 'cloak', list: 1, correct: true },
+    { index: 3, id: 14, word: 'kloak', list: 1, correct: false },
+    { index: 3, id: 15, word: 'clauk', list: 1, correct: false },
+
+    { index: 4, id: 16, word: 'dolfyn', list: 1, correct: false },
+    { index: 4, id: 17, word: 'doulphin', list: 1, correct: false },
+    { index: 4, id: 18, word: 'dolphin', list: 1, correct: true },
+    { index: 4, id: 19, word: 'dolfin', list: 1, correct: false },
 ])
 
 const getList = (list) => {
@@ -27,7 +48,6 @@ const getList = (list) => {
 }
 
 const currentCard = ref(0);
-const input = ref();
 
 const correct = ref(false);
 
@@ -57,6 +77,9 @@ const nextCard = () => {
     } else {
         currentCard.value = 0;
     }
+
+    getList(2).forEach(item => item.list = 1);
+    correct.value = false
 }
 
 const previousCard = () => {
@@ -65,6 +88,8 @@ const previousCard = () => {
     } else {
         currentCard.value = answers.length / 4 - 1;
     }
+    getList(2).forEach(item => item.list = 1);
+    correct.value = false
 }
 </script>
 
@@ -115,7 +140,7 @@ const previousCard = () => {
                 </h1>
             </div>
 
-            <span v-if="getList(2).length < 1" style="color: #ccc">drop your word here</span>
+            <span v-if="getList(2).length < 1" style="color: #ccc">Drop your word here</span>
         </div>
 
 

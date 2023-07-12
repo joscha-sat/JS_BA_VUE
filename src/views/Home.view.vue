@@ -5,25 +5,13 @@ import happyCat from '@/assets/images/cat/happyCat.png';
 import bark from '../assets/sounds/dog/bark.mp3';
 import meow from '../assets/sounds/cat/meow.mp3';
 
-
-import { useSpeechSynthesis } from "@vueuse/core";
 import { useMascotStore } from "@/stores/mascot.store";
 
-const txt = ref();
 const audioRef = ref<HTMLAudioElement>();
-
-const speechStore = useTextToSpeechStore();
-const { speech, voice } = storeToRefs(speechStore);
 
 const mascotStore = useMascotStore();
 const { isDog } = storeToRefs(mascotStore)
 
-const test = () => {
-    speech.value = useSpeechSynthesis(txt.value.textContent, {
-        voice
-    })
-    speech.value.speak()
-}
 const playSound = () => {
     audioRef.value.play()
 }
@@ -33,7 +21,7 @@ const playSound = () => {
 <!-- HTML ----------------------------------------------------------//-->
 <template>
 
-    <TitleWithSound title="Hello and welcome to listen, play learn! Choose a task"/>
+    <TitleWithSound title="Hello and welcome to listen, play, learn! Choose a task"/>
 
     <div class="container">
         <div class="left"></div>
