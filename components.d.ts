@@ -12,6 +12,7 @@ declare module 'vue' {
     ExpansionPanel: typeof import('./src/components/shared/Expansion-Panel.vue')['default']
     FontFamilySettings: typeof import('./src/components/settings/Font-Family-Settings.vue')['default']
     FontSizeSettings: typeof import('./src/components/settings/Font-Size-Settings.vue')['default']
+    HelpMeBtn: typeof import('./src/components/shared/HelpMeBtn.vue')['default']
     ImageCard: typeof import('./src/components/shared/Image-Card.vue')['default']
     InitialSoundTask: typeof import('./src/components/tasks/initial_sound/InitialSoundTask.vue')['default']
     ListeningPlaySound: typeof import('./src/components/shared/ListeningPlaySound.vue')['default']

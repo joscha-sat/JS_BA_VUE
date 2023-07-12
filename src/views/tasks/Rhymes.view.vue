@@ -1,15 +1,19 @@
 <!-- TS ------------------------------------------------------------//-->
 <script lang="ts" setup>
 
+import HelpMeBtn from "@/components/shared/HelpMeBtn.vue";
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
+    <div class="header">
 
+        <HelpMeBtn/>
 
-    <div class="link">
-        rhymes are checked by
-        <a href="https://rhymebrain.com/api.html" target="_blank">RhymeBrain API</a>
+        <div>
+            rhymes are checked by
+            <a href="https://rhymebrain.com/api.html" target="_blank">RhymeBrain API</a>
+        </div>
     </div>
 
     <v-container>
@@ -19,8 +23,10 @@
 
 <!-- SCSS ---------------------------------------------------------// -->
 <style lang="scss" scoped>
-.link {
-    text-align: right;
+.header {
+    display: flex;
+    justify-content: space-between;
+
     padding: 1rem;
 }
 </style>

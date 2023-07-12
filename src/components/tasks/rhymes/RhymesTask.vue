@@ -8,6 +8,7 @@ import sunSrc from "@/assets/images/tasks/rhymes/sun.png";
 import fishSrc from "@/assets/images/tasks/rhymes/fish.png";
 import { useTextToSpeechStore } from "@/stores/TextToSpeech.store";
 import { Ref } from "vue";
+import HelpMeBtn from "@/components/shared/HelpMeBtn.vue";
 
 interface RhymeResponse {
     word: string,
