@@ -10,9 +10,7 @@ defineProps({
 const dialogHelper = useDialogHelperStore();
 const { visible } = storeToRefs(dialogHelper)
 
-
 const speechStore = useTextToSpeechStore();
-
 </script>
 
 <!-- HTML ----------------------------------------------------------//-->

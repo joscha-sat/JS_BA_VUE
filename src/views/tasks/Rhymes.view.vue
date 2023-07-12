@@ -2,7 +2,7 @@
 <script lang="ts" setup>
 import HelpMeBtn from "@/components/shared/HelpMeBtn.vue";
 
-const tutorialText = 'In the middle of the screen you see an image together with a word. You can listen to the word if you click on the volume button. Below you see a textfield. Now enter words you believe rhyme to the given word. You can check your answer with the button below'
+const tutorialText = 'In the middle of the screen you see an image together with a word. You can listen to the word by clicking on the image or on the volume button. Below you see a textfield. Now enter words you believe rhyme to the given word. You can check your answer with the button below'
 
 </script>
 
