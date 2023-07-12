@@ -3,7 +3,6 @@
 import { useDialogHelperStore } from "@/stores/DialogHelper.store";
 
 defineProps({
-    title: String,
     txt: String
 })
 
@@ -18,8 +17,8 @@ const speechStore = useTextToSpeechStore();
     <v-dialog v-model="visible" width="40dvw">
         <v-card style="padding: 0.75rem">
             <v-card-title>
-                {{ title }}
-                <v-btn color="primary" @click="speechStore.playVoice(title)">
+                What do I need to do?
+                <v-btn color="primary" @click="speechStore.playVoice('What do I need to do?')">
                     <v-icon>mdi-volume-high</v-icon>
                 </v-btn>
             </v-card-title>
@@ -31,7 +30,7 @@ const speechStore = useTextToSpeechStore();
                 </v-btn>
             </v-card-text>
 
-            <v-card-actions>
+            <v-card-actions style="margin-top: 1rem">
                 <v-btn color="primary" variant="flat" @click="dialogHelper.closeDialog()">ok</v-btn>
             </v-card-actions>
         </v-card>

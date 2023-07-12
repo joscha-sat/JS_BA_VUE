@@ -23,8 +23,7 @@ const speechStore = useTextToSpeechStore();
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: 0.5rem;
     gap: 2rem;
-
-    margin-top: 2rem;
 }
 </style>
