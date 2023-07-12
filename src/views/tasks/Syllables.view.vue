@@ -12,6 +12,4 @@ import SyllableTask from "@/components/tasks/syllables/SyllableTask.vue";
 
 <!-- SCSS ---------------------------------------------------------// -->
 <style lang="scss" scoped>
-
-
 </style>

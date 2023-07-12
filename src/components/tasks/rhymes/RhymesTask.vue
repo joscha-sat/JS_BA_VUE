@@ -78,7 +78,9 @@ const txtToSpeech = useTextToSpeechStore();
 <template>
     <div class="container">
 
-        <div class="word-container">
+        <TitleWithSound title="Find a word that rhymes to the given word!"/>
+
+        <div class="slider-container">
             <!--    PREVIOUS CARD BUTTON   -->
             <v-btn :icon="'mdi-arrow-left-thick'" color="primary" @click="previousCard()"></v-btn>
 
@@ -107,7 +109,7 @@ const txtToSpeech = useTextToSpeechStore();
         <v-text-field
           v-model="enteredWord"
           append-icon="mdi-volume-high"
-          class="input"
+          class="input mt-8"
           label="Enter your rhyme"
           @click:append="txtToSpeech.playVoice(enteredWord)"
         >
@@ -116,31 +118,25 @@ const txtToSpeech = useTextToSpeechStore();
 
         <!--    CHECK RESULT BUTTON    -->
         <v-btn color="primary" @click="check(currentCard)">Check if my word rhymes</v-btn>
-
-        <!--        <div v-if="doesItRhyme === true">-->
-        <!--            YES WELL DONE!-->
-        <!--        </div>-->
-        <!--        <div v-if="doesItRhyme === false">-->
-        <!--            TRY AGAIN! UNKNOWN WORD OR NO RHYME.-->
-        <!--        </div>-->
     </div>
 </template>
 
 <!-- SCSS ---------------------------------------------------------// -->
 <style lang="scss" scoped>
 .container {
-    width: min(40rem, 100%);
+    width: min(60rem, 100%);
     margin: auto;
 
-    .word-container {
+    .slider-container {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 2rem;
+        margin-top: 2rem;
     }
 
     .input {
-        margin-block: 2rem;
+        margin: auto;
     }
 }
-
 </style>

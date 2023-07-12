@@ -137,7 +137,7 @@ const previousCard = () => {
 <!-- SCSS ---------------------------------------------------------// -->
 <style lang="scss" scoped>
 .container {
-    width: min(55rem, 100%);
+    width: min(60rem, 100%);
     margin: auto;
 
     .slider-container {

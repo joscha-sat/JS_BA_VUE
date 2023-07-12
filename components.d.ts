@@ -17,6 +17,8 @@ declare module 'vue' {
     ListeningPlaySound: typeof import('./src/components/shared/ListeningPlaySound.vue')['default']
     ListeningTask: typeof import('./src/components/tasks/listening/ListeningTask.vue')['default']
     PhonemesTask: typeof import('./src/components/tasks/phonemes/PhonemesTask.vue')['default']
+    PopUpMascotCorrect: typeof import('./src/components/shared/PopUpMascotCorrect.vue')['default']
+    PopUpMascotFalse: typeof import('./src/components/shared/PopUpMascotFalse.vue')['default']
     RhymesTask: typeof import('./src/components/tasks/rhymes/RhymesTask.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
