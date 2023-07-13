@@ -8,7 +8,7 @@ const tutorialText = "On your screen you can see four empty spaces and four word
 <!-- HTML ----------------------------------------------------------//-->
 <template>
 
-    <HelpMeBtn style="padding: 1rem"/>
+    <HelpMeBtn/>
 
     <v-container>
         <SentenceTask/>

@@ -75,6 +75,7 @@ const nextCard = () => {
     } else {
         currentCard.value = 0;
     }
+    enteredSyllableNumber.value = null;
 }
 
 const previousCard = () => {
@@ -83,6 +84,7 @@ const previousCard = () => {
     } else {
         currentCard.value = syllables.length - 1;
     }
+    enteredSyllableNumber.value = null;
 }
 </script>
 
@@ -130,7 +132,6 @@ const previousCard = () => {
         </div>
 
     </div>
-
 
 </template>
 

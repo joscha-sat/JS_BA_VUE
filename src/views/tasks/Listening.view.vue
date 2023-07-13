@@ -8,7 +8,7 @@ const tutorialText = 'On your screen you can see a figure with a play button nex
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
-    <HelpMeBtn style="padding: 1rem"/>
+    <HelpMeBtn/>
 
     <v-container>
         <ListeningTask/>

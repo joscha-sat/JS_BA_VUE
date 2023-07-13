@@ -79,6 +79,7 @@
     "toValue": true,
     "useMascotStore": true,
     "useTextToSpeechStore": true,
-    "useSoundHelperStore": true
+    "useSoundHelperStore": true,
+    "useDialogHelperStore": true
   }
 }

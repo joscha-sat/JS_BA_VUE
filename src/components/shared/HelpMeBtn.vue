@@ -11,7 +11,7 @@ const dialogStore = useDialogHelperStore();
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
-    <div>
+    <div class="btn">
         <v-btn color="primary" @click="dialogStore.openDialog()">
             {{ btnTxt }}
         </v-btn>
@@ -23,5 +23,7 @@ const dialogStore = useDialogHelperStore();
 
 <!-- SCSS ---------------------------------------------------------// -->
 <style lang="scss" scoped>
-
+.btn {
+    padding: 1rem;
+}
 </style>
