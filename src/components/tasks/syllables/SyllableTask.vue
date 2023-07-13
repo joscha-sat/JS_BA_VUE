@@ -11,6 +11,9 @@ import happy from '../../../assets/images/tasks/syllables/happy.png';
 import sun from '../../../assets/images/tasks/syllables/sun.png';
 import { useTextToSpeechStore } from "@/stores/TextToSpeech.store";
 
+import correct from '../../../assets/sounds/tasks/success.mp3'
+import fail from '../../../assets/sounds/tasks/fail.mp3'
+
 const syllables: Syllable[] = reactive([
     { id: 0, syllables: 3, word: 'Banana', src: banana },
     { id: 1, syllables: 2, word: 'Happy', src: happy },
@@ -31,10 +34,23 @@ const enteredSyllableNumber = ref()
 const answerCorrect = ref(false);
 
 const checkAnswer = () => {
-    if (Number(enteredSyllableNumber.value) === syllables[currentCard.value].syllables) {
-        answerCorrect.value = true
-    } else {
-        answerCorrect.value = false
+    answerCorrect.value = Number(enteredSyllableNumber.value) === syllables[currentCard.value].syllables;
+    const audio = ref();
+
+    if (answerCorrect.value) {
+        audio.value = new Audio(correct);
+        audio.value.volume = 0.5;
+        audio.value.play()
+
+        speechStore.playVoice(`Great! ${ syllables[currentCard.value].word } has ${ syllables[currentCard.value].syllables } syllables!`);
+
+        setTimeout(() => {
+            nextCard()
+        }, 4000)
+    } else if (!answerCorrect.value && enteredSyllableNumber.value) {
+        audio.value = new Audio(fail);
+        audio.value.volume = 0.5;
+        audio.value.play()
     }
 }
 
@@ -44,6 +60,7 @@ const playAudio = () => {
 
     audio.value = new Audio(clap);
     setTimeout(() => {
+        audio.value.volume = 0.3;
         audio.value.play();
     }, 300)
     audio.value.addEventListener('ended', restartAudio);
@@ -53,6 +70,7 @@ const restartAudio = () => {
     playCount++;
     if (playCount < maxRepetitions.value) {
         audio.value.currentTime = 0;
+        audio.value.volume = 0.3;
         audio.value.play();
     } else {
         audio.value.removeEventListener('ended', restartAudio);
@@ -64,7 +82,6 @@ const speak = async (text) => {
     playAudio();
     speech.value = useSpeechSynthesis(text, { voice, rate: 0.1 });
     speech.value.speak();
-
 };
 
 const currentCard = ref(0);
@@ -92,7 +109,7 @@ const previousCard = () => {
 <template>
     <div class="container">
 
-        <TitleWithSound title="How many syllables do the words have?"/>
+        <TitleWithSound title="How many syllables does the word have?"/>
 
         <div class="slider-container">
             <v-btn :icon="'mdi-arrow-left-thick'" color="primary" @click="previousCard()"></v-btn>
@@ -117,6 +134,7 @@ const previousCard = () => {
         <!--   NUMBER OF SYLLABLES INPUT     -->
         <v-text-field
           v-model="enteredSyllableNumber"
+          :class="{'input-correct:': answerCorrect}"
           class="mt-8 input"
           placeholder="Enter the number of syllables!"
           type="number"
@@ -124,7 +142,7 @@ const previousCard = () => {
         </v-text-field>
 
         <v-btn color="primary" @click="checkAnswer">
-            check answer
+            check my answer
         </v-btn>
 
         <div class="mt-5">
@@ -151,6 +169,10 @@ const previousCard = () => {
 
     .input {
         margin: auto;
+    }
+
+    .input-correct {
+        background-color: #78af78;
     }
 }
 </style>
