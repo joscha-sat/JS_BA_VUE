@@ -13,7 +13,6 @@ const change = () => {
 
 <!-- HTML ----------------------------------------------------------//-->
 <template>
-
     <v-checkbox v-model="shouldBgMusicPlay" label="play background music" @change="change"></v-checkbox>
 </template>
 
