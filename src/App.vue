@@ -56,6 +56,7 @@ const speechStore = useTextToSpeechStore();
 const mascotStore = useMascotStore();
 const { isDog } = storeToRefs(mascotStore)
 
+
 const toggleTheme = () => {
     theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
     localStorage.setItem('mode', theme.global.name.value);
@@ -90,3 +91,4 @@ onMounted(() => {
 <style lang='scss'>
 @use "style" as *;
 </style>
+

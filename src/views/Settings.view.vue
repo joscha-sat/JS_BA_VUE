@@ -19,6 +19,11 @@
                     <ColorThemePicker/>
                 </div>
 
+                <!-- BACKGROUND MUSIC CHECKBOX -->
+                <div class="block">
+                    <BackgroundMusicSettings/>
+                </div>
+
                 <!-- FONT SIZE SETTER -->
                 <div class="block">
                     <FontSizeSettings/>

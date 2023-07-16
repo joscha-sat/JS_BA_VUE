@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BackBtn: typeof import('./src/components/shared/Back-Btn.vue')['default']
+    BackgroundMusicSettings: typeof import('./src/components/settings/Background-Music-Settings.vue')['default']
     ColorThemePicker: typeof import('./src/components/settings/Color-Theme-Picker.vue')['default']
     ExpansionPanel: typeof import('./src/components/shared/Expansion-Panel.vue')['default']
     FontFamilySettings: typeof import('./src/components/settings/Font-Family-Settings.vue')['default']

@@ -1,11 +1,16 @@
 import { defineStore } from 'pinia';
 
+import bgMusic from '../assets/sounds/bgMusic.mp3';
+
 export const useSoundHelperStore = defineStore('soundHelper', {
     state: () => ({
         audioIsPlaying: false,
         isPlayedOnce: false,
         audioDuration: 0,
         currentTime: 0,
+        shouldBgMusicPlay: false,
+        bgIsPlaying: false,
+        audio: new Audio(bgMusic),
     }),
 
     // GETTER -------------------------------------------------------------------- //>
@@ -42,6 +47,22 @@ export const useSoundHelperStore = defineStore('soundHelper', {
             }
 
             this.isPlayedOnce = true;
+        },
+
+        onMountedBgMusic() {
+            if (!this.bgIsPlaying && this.shouldBgMusicPlay) {
+                this.bgIsPlaying = true;
+                this.audio.volume = 0.1;
+                this.audio.play().then(() => {
+                    this.audio.loop = true;
+                });
+
+                this.audio.bgIsPlaying = false;
+            } else {
+                this.audio.pause();
+                this.audio.currentTime = 0;
+                this.bgIsPlaying = false;
+            }
         },
     },
 });
